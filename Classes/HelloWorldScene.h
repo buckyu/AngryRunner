@@ -15,6 +15,11 @@ public:
     // a selector callback
     void menuCloseCallback(Object* pSender);
     
+    
+  
+
+    
+    
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
 };
