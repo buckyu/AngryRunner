@@ -59,14 +59,14 @@ void PlayerObject::startRunAnimation()
 }
 
 void PlayerObject::moveRight() {
-    b2Vec2 impulse = b2Vec2(7.0f, 0.0f);
+    b2Vec2 impulse = b2Vec2(7.0f, 20.0f);
     body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),false);
     
     this->startRunAnimation();
 }
 
 void PlayerObject::jump() {
-    b2Vec2 impulse = b2Vec2(4.0f, 15.0f);
+    b2Vec2 impulse = b2Vec2(24.0f, 15.0f);
     body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),false);
 }
 
