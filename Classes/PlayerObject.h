@@ -6,15 +6,19 @@
 
 using namespace cocos2d;
 
-class PlayerObject 
+class PlayerObject : public b2ContactListener
 {
+    int jumps_count = 0;
+  
     SpriteFrameCache* sprite_cache;
     SpriteFrameCache* cache;
     Animation* animation_run;
     b2Body* body;
+
+    void reCalc();
     
     public:
-        void init();
+        void init(float poz_x, float poz_y);
         void reDraw();
         void startRunAnimation();
         void initPhysic(b2World* world);
@@ -24,6 +28,12 @@ class PlayerObject
         SpriteBatchNode* sprite_player;
         Vector<SpriteFrame*> spriteFrames;
     
+    
+    private:
+        void BeginContact(b2Contact* contact);
+        void EndContact(b2Contact* contact);
+        void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
+        void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
 };
 
 

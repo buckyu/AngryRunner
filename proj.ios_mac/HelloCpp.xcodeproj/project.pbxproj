@@ -300,6 +300,7 @@
 		537634F518BEDA2800BC2044 /* map_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_tiles.png; sourceTree = "<group>"; };
 		53A66DB818BBC8A100802FEC /* RunScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RunScene.cpp; path = ../Classes/RunScene.cpp; sourceTree = "<group>"; };
 		53A66DB918BBC8A100802FEC /* RunScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunScene.h; path = ../Classes/RunScene.h; sourceTree = "<group>"; };
+		53E0E05718BFE33900E55D27 /* Setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = ../Classes/Setting.h; sourceTree = "<group>"; };
 		53FCB1D618BD2153004F8996 /* PlayerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerObject.cpp; path = ../Classes/PlayerObject.cpp; sourceTree = "<group>"; };
 		53FCB1D718BD2153004F8996 /* PlayerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerObject.h; path = ../Classes/PlayerObject.h; sourceTree = "<group>"; };
 		53FCB1DD18BD2B63004F8996 /* button-jump-select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-jump-select.png"; sourceTree = "<group>"; };
@@ -398,6 +399,7 @@
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 				53A66DB818BBC8A100802FEC /* RunScene.cpp */,
 				53A66DB918BBC8A100802FEC /* RunScene.h */,
+				53E0E05718BFE33900E55D27 /* Setting.h */,
 			);
 			name = Classes;
 			path = ../classes;

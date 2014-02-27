@@ -5,6 +5,8 @@
 #include "cocos2d.h"
 #import "Box2D/Box2D.h"
 #import "PlayerObject.h"
+#include "Setting.h"
+
 class RunScene : public cocos2d::Layer
 {
     float map_tmx_offset_y;

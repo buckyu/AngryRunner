@@ -4,6 +4,7 @@
 
 
 #define PTM_RATIO 32
+
 USING_NS_CC;
 
 Scene* RunScene::createScene()
@@ -37,9 +38,9 @@ bool RunScene::init()
     menu->setPosition(Point::ZERO);
     this->addChild(menu, 1);
    
-    // update timer
+
     
-    b2Vec2 gravity = b2Vec2(0.0f, -9.8f);
+    b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
     world = new b2World(gravity);
 
     map_layer->addChild(B2DebugDrawLayer::create(world, PTM_RATIO), 9999);
@@ -47,8 +48,10 @@ bool RunScene::init()
     contactListener = new b2ContactListener();
     world->SetContactListener(contactListener);
 
+    
+    
     player = new PlayerObject();
-    player->init();
+    player->init(600,500);
     player->initPhysic(world);
     this->map_layer->addChild(player->sprite_player);
     
@@ -69,9 +72,6 @@ bool RunScene::init()
         this->makePhysicPoligonGround(tool,0);
     }
 
-    
-//    CCLOG("1111    : %f",map_tile->getMapSize().height);
-//    map_tile->getTileSize();
     // set updater
     this->schedule(schedule_selector(RunScene::update));
 
@@ -88,9 +88,9 @@ void RunScene::update(float dt)
     for (b2Body* b = world->GetBodyList(); b; b = b->GetNext()) {
 		if (b->GetUserData() != NULL) {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			Sprite *myActor = (CCSprite*)b->GetUserData();
-            myActor->setPosition( b->GetPosition().x * PTM_RATIO , b->GetPosition().y * PTM_RATIO);
-			myActor->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
+			//Sprite *myActor = (CCSprite*)b->GetUserData();
+            //myActor->setPosition( b->GetPosition().x * PTM_RATIO , b->GetPosition().y * PTM_RATIO);
+			//myActor->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
 		}	
 	}
     player->reDraw();
@@ -107,13 +107,13 @@ void RunScene::update(float dt)
 
 void RunScene::buttonJumpCallback(Object* pSender)
 {
-    player->moveRight();
+    player->jump();
 }
 
 void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
 {
 	b2BodyDef bodyDef;
-    bodyDef.position.Set(0/PTM_RATIO, 0/PTM_RATIO);
+    bodyDef.position.Set( 0 / PTM_RATIO, 0 / PTM_RATIO );
 	b2Body *body = world->CreateBody(&bodyDef);
     
     b2PolygonShape shape;
@@ -126,17 +126,15 @@ void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
 
     std::string poins_string = polyobject_node.attribute("points").value();
     std::vector<std::string> points_array = this->split(poins_string, " ");
-    
-   
-    
+
     for (auto &attack : points_array )
     {
         std::vector<std::string> p_array = this->split(attack, ",");
         if(p_array.size() == 2)
         {
-            b2Vec2 p = b2Vec2(( ::atof(p_array[0].c_str()) + x_offset ) / PTM_RATIO ,
-                              ( ::atof(p_array[1].c_str()) + y_offset ) / PTM_RATIO * -1 + this->map_tmx_offset_y  );
-
+            b2Vec2 p = b2Vec2( ( ::atof(p_array[0].c_str()) + x_offset ) / PTM_RATIO ,
+                               ( ::atof(p_array[1].c_str()) + y_offset ) / PTM_RATIO * -1 + this->map_tmx_offset_y  );
+            
             shape_points.push_back(p);
         }
     }
@@ -148,11 +146,11 @@ void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
 	b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
 	fixtureDef.density = 1;
-	fixtureDef.friction = 1;
-	fixtureDef.restitution = 1;
+	fixtureDef.friction = 0.4;
+	fixtureDef.restitution = 0.1f;
+    body->SetUserData( (void*)OBJ_TYPE_GROUND );
 	body->CreateFixture(&fixtureDef);
 }
-
 
 std::vector<std::string> RunScene::split(std::string str, std::string delim)
 {
@@ -162,7 +160,7 @@ std::vector<std::string> RunScene::split(std::string str, std::string delim)
     
     while( (end = str.find(delim, start)) != std::string::npos )
     {
-            v.push_back(str.substr(start, end-start));
+        v.push_back(str.substr(start, end-start));
         start = end + delim.length();
     }
     v.push_back(str.substr(start));
