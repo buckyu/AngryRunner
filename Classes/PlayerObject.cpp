@@ -73,4 +73,6 @@ void PlayerObject::jump() {
 void PlayerObject::reDraw()
 {
     this->player_sprite->setPosition(this->body->GetPosition().x * PTM_RATIO, this->body->GetPosition().y * PTM_RATIO);
+    
+    
 }

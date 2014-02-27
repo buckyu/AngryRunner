@@ -58,14 +58,15 @@
 		50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF629517ECD46A001EB2F8 /* Icon-100.png */; };
 		50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A017ECD613001EB2F8 /* Icon-29.png */; };
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
+		537634E018BE917300BC2044 /* map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 537634DF18BE917300BC2044 /* map.tmx */; };
+		537634F018BEAF1700BC2044 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 537634EE18BEAF1700BC2044 /* pugixml.cpp */; };
+		537634F618BEDA2800BC2044 /* map_tiles.png in Resources */ = {isa = PBXBuildFile; fileRef = 537634F518BEDA2800BC2044 /* map_tiles.png */; };
 		53A66DBA18BBC8A100802FEC /* RunScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53A66DB818BBC8A100802FEC /* RunScene.cpp */; };
 		53FCB1D818BD2153004F8996 /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53FCB1D618BD2153004F8996 /* PlayerObject.cpp */; };
 		53FCB1DF18BD2B63004F8996 /* button-jump-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1DD18BD2B63004F8996 /* button-jump-select.png */; };
 		53FCB1E018BD2B63004F8996 /* button-jump.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1DE18BD2B63004F8996 /* button-jump.png */; };
 		53FCB1F218BD56DC004F8996 /* sprite_player.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1F018BD56DC004F8996 /* sprite_player.plist */; };
-		53FCB1F318BD56DC004F8996 /* sprite_player.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1F118BD56DC004F8996 /* sprite_player.png */; };
 		53FCB1FA18BD67B5004F8996 /* block.png in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1F918BD67B5004F8996 /* block.png */; };
-		53FCB1FC18BD6C2C004F8996 /* map.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 53FCB1FB18BD6C2C004F8996 /* map.tmx */; };
 		53FCB20118BD7036004F8996 /* B2DebugDrawLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53FCB1FD18BD7036004F8996 /* B2DebugDrawLayer.cpp */; };
 		53FCB20218BD7036004F8996 /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53FCB1FF18BD7036004F8996 /* GLES-Render.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
@@ -292,6 +293,11 @@
 		50EF629517ECD46A001EB2F8 /* Icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-100.png"; sourceTree = "<group>"; };
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
+		537634DF18BE917300BC2044 /* map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.tmx; sourceTree = "<group>"; };
+		537634ED18BEAF1700BC2044 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
+		537634EE18BEAF1700BC2044 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
+		537634EF18BEAF1700BC2044 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		537634F518BEDA2800BC2044 /* map_tiles.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_tiles.png; sourceTree = "<group>"; };
 		53A66DB818BBC8A100802FEC /* RunScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RunScene.cpp; path = ../Classes/RunScene.cpp; sourceTree = "<group>"; };
 		53A66DB918BBC8A100802FEC /* RunScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunScene.h; path = ../Classes/RunScene.h; sourceTree = "<group>"; };
 		53FCB1D618BD2153004F8996 /* PlayerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PlayerObject.cpp; path = ../Classes/PlayerObject.cpp; sourceTree = "<group>"; };
@@ -299,9 +305,7 @@
 		53FCB1DD18BD2B63004F8996 /* button-jump-select.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-jump-select.png"; sourceTree = "<group>"; };
 		53FCB1DE18BD2B63004F8996 /* button-jump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-jump.png"; sourceTree = "<group>"; };
 		53FCB1F018BD56DC004F8996 /* sprite_player.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sprite_player.plist; sourceTree = "<group>"; };
-		53FCB1F118BD56DC004F8996 /* sprite_player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sprite_player.png; sourceTree = "<group>"; };
 		53FCB1F918BD67B5004F8996 /* block.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = block.png; sourceTree = "<group>"; };
-		53FCB1FB18BD6C2C004F8996 /* map.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map.tmx; sourceTree = "<group>"; };
 		53FCB1FD18BD7036004F8996 /* B2DebugDrawLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = B2DebugDrawLayer.cpp; sourceTree = "<group>"; };
 		53FCB1FE18BD7036004F8996 /* B2DebugDrawLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = B2DebugDrawLayer.h; sourceTree = "<group>"; };
 		53FCB1FF18BD7036004F8996 /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GLES-Render.cpp"; sourceTree = "<group>"; };
@@ -382,6 +386,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				537634EC18BEAF1700BC2044 /* pugixml */,
 				53FCB1FD18BD7036004F8996 /* B2DebugDrawLayer.cpp */,
 				53FCB1FE18BD7036004F8996 /* B2DebugDrawLayer.h */,
 				53FCB1FF18BD7036004F8996 /* GLES-Render.cpp */,
@@ -509,6 +514,16 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		537634EC18BEAF1700BC2044 /* pugixml */ = {
+			isa = PBXGroup;
+			children = (
+				537634ED18BEAF1700BC2044 /* pugiconfig.hpp */,
+				537634EE18BEAF1700BC2044 /* pugixml.cpp */,
+				537634EF18BEAF1700BC2044 /* pugixml.hpp */,
+			);
+			path = pugixml;
+			sourceTree = "<group>";
+		};
 		53FCB1CC18BD201C004F8996 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,10 +545,10 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				53FCB1FB18BD6C2C004F8996 /* map.tmx */,
+				537634DF18BE917300BC2044 /* map.tmx */,
 				53FCB1F018BD56DC004F8996 /* sprite_player.plist */,
 				53FCB1F918BD67B5004F8996 /* block.png */,
-				53FCB1F118BD56DC004F8996 /* sprite_player.png */,
+				537634F518BEDA2800BC2044 /* map_tiles.png */,
 				53FCB1DC18BD2B63004F8996 /* buttons */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
 			);
@@ -734,7 +749,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
-				53FCB1F318BD56DC004F8996 /* sprite_player.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -742,13 +756,14 @@
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				53FCB1E018BD2B63004F8996 /* button-jump.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				537634F618BEDA2800BC2044 /* map_tiles.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				53FCB1DF18BD2B63004F8996 /* button-jump-select.png in Resources */,
-				53FCB1FC18BD6C2C004F8996 /* map.tmx in Resources */,
+				537634E018BE917300BC2044 /* map.tmx in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
@@ -775,6 +790,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				537634F018BEAF1700BC2044 /* pugixml.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				53A66DBA18BBC8A100802FEC /* RunScene.cpp in Sources */,

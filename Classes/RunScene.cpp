@@ -1,6 +1,8 @@
 #include "RunScene.h"
 #import "PlayerObject.h"
 #import "B2DebugDrawLayer.h"
+
+
 #define PTM_RATIO 32
 USING_NS_CC;
 
@@ -15,9 +17,12 @@ Scene* RunScene::createScene()
 bool RunScene::init()
 {
     if ( !Layer::init() )  return false;
-   
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
+    
+    map_layer = Layer::create();
+    addChild(map_layer);
+    
+    visibleSize = Director::getInstance()->getVisibleSize();
+    origin = Director::getInstance()->getVisibleOrigin();
     
     
     auto closeItem = MenuItemImage::create(
@@ -33,43 +38,43 @@ bool RunScene::init()
     this->addChild(menu, 1);
    
     // update timer
-    this->schedule(schedule_selector(RunScene::update));
     
-    
-    //auto sprite = Sprite::create("HelloWorld.png");
-    
-    // position the sprite on the center of the screen
-    //sprite->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-    
- 
-    //tileMapNode = TMXTiledMap::create("map.tmx");
-    //tileMapNode->setPosition(Point(0, 0));
-    //this->addChild(tileMapNode, 0);
-    
-   
     b2Vec2 gravity = b2Vec2(0.0f, -9.8f);
     world = new b2World(gravity);
-    
-    
-    addChild(B2DebugDrawLayer::create(world, PTM_RATIO), 9999);
+
+    map_layer->addChild(B2DebugDrawLayer::create(world, PTM_RATIO), 9999);
     
     contactListener = new b2ContactListener();
     world->SetContactListener(contactListener);
-    
-    
+
     player = new PlayerObject();
     player->init();
     player->initPhysic(world);
-    this->addChild(player->sprite_player);
+    this->map_layer->addChild(player->sprite_player);
     
-    this->makeBox2dObjAt();
     
-    float playfield_width = visibleSize.width * 10.0; // make the x-boundry 2 times the screen width
-    float playfield_height = visibleSize.height * 10.0; // make the y-boundry 2 times the screen height
-    Point* center = new Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y);
+    // load map
+    this->map_tile = TMXTiledMap::create("map.tmx");
+    this->map_layer->addChild(map_tile,10);
+    
+    // get y-offset
+    map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
+    
+    // parse map for physics object
+    std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( "map.tmx" );
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load_file( tmx_full_path.c_str() );
+    for (pugi::xml_node tool = doc.child("map").child("objectgroup").child("object"); tool; tool = tool.next_sibling("object"))
+    {
+        this->makePhysicPoligonGround(tool,0);
+    }
 
-  
     
+//    CCLOG("1111    : %f",map_tile->getMapSize().height);
+//    map_tile->getTileSize();
+    // set updater
+    this->schedule(schedule_selector(RunScene::update));
+
     return true;
 }
 
@@ -89,35 +94,77 @@ void RunScene::update(float dt)
 		}	
 	}
     player->reDraw();
-    
-    Director::getInstance()->getProjection();
-    
 
+    float player_x = this->player->player_sprite->getPositionX();
+    float player_y = this->player->player_sprite->getPositionY();
+    
+    float mapOffset_x = visibleSize.width - player_x - visibleSize.width / 2;
+    float mapOffset_y = visibleSize.height - player_y - visibleSize.height / 2;
+
+    this->map_layer->setPositionX(mapOffset_x);
+    this->map_layer->setPositionY(mapOffset_y);
 }
 
 void RunScene::buttonJumpCallback(Object* pSender)
 {
-    CCLOG("button jump pressed");
     player->moveRight();
 }
 
-
-
-
-
-void RunScene::makeBox2dObjAt()
+void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
 {
 	b2BodyDef bodyDef;
-    bodyDef.position.Set(600/PTM_RATIO, 100/PTM_RATIO);
-    
+    bodyDef.position.Set(0/PTM_RATIO, 0/PTM_RATIO);
 	b2Body *body = world->CreateBody(&bodyDef);
-	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox(400/PTM_RATIO, 10/PTM_RATIO);
+    
+    b2PolygonShape shape;
+    std::vector<b2Vec2> shape_points;
 
+    pugi::xml_node polyobject_node = tool.child("polygon");
+        
+    float x_offset = ::atof( tool.attribute("x").value() );
+    float y_offset = ::atof( tool.attribute("y").value() );
+
+    std::string poins_string = polyobject_node.attribute("points").value();
+    std::vector<std::string> points_array = this->split(poins_string, " ");
+    
+   
+    
+    for (auto &attack : points_array )
+    {
+        std::vector<std::string> p_array = this->split(attack, ",");
+        if(p_array.size() == 2)
+        {
+            b2Vec2 p = b2Vec2(( ::atof(p_array[0].c_str()) + x_offset ) / PTM_RATIO ,
+                              ( ::atof(p_array[1].c_str()) + y_offset ) / PTM_RATIO * -1 + this->map_tmx_offset_y  );
+
+            shape_points.push_back(p);
+        }
+    }
+    
+    if( shape_points.size() < 3 ) return;
+    
+    shape.Set( &shape_points[0], shape_points.size());
+    
 	b2FixtureDef fixtureDef;
-	fixtureDef.shape = &dynamicBox;
+    fixtureDef.shape = &shape;
 	fixtureDef.density = 1;
 	fixtureDef.friction = 1;
 	fixtureDef.restitution = 1;
 	body->CreateFixture(&fixtureDef);
+}
+
+
+std::vector<std::string> RunScene::split(std::string str, std::string delim)
+{
+    unsigned start = 0;
+    unsigned end;
+    std::vector<std::string> v;
+    
+    while( (end = str.find(delim, start)) != std::string::npos )
+    {
+            v.push_back(str.substr(start, end-start));
+        start = end + delim.length();
+    }
+    v.push_back(str.substr(start));
+    return v;
 }
