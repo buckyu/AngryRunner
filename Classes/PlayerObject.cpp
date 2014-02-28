@@ -3,8 +3,8 @@
 #define WORLD_TO_SCREEN(n) ((n) * PTM_RATIO)
 #define B2_ANGLE_TO_COCOS_ROTATION(n) (-1 * CC_RADIANS_TO_DEGREES(n))
 #define COCOS_ROTATION_TO_B2_ANGLE(n) (CC_DEGREES_TO_RADIANS(-1 * n))
-#include "PlayerObject.h"
-#include "Setting.h"
+#include "../../Classes/PlayerObject.h"
+#include "../../Classes/Setting.h"
 void PlayerObject::init(float poz_x, float poz_y)
 {
     Size visibleSize = Director::getInstance()->getVisibleSize();

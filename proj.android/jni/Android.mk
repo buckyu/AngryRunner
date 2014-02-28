@@ -8,6 +8,13 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
+                   ../../Classes/B2DebugDrawLayer.cpp \
+                   ../../Classes/GLES-Render.cpp \
+                   ../../Classes/PlayerObject.cpp \
+                   ../../Classes/RunScene.cpp \
+                   ../../Classes/pugixml/pugixml.cpp \
+                   ../../Classes/pugixml/pugixml.hpp \
+                   ../../Classes/pugixml/pugiconfig.hpp \
                    ../../Classes/HelloWorldScene.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

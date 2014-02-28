@@ -1,11 +1,11 @@
 #ifndef __HelloCpp__RunScene__
 #define __HelloCpp__RunScene__
 
-#include "pugixml/pugixml.hpp"
+#include "../../Classes/pugixml/pugixml.hpp"
 #include "cocos2d.h"
 #import "Box2D/Box2D.h"
-#import "PlayerObject.h"
-#include "Setting.h"
+#import "../../Classes/PlayerObject.h"
+#include "../../Classes/Setting.h"
 
 class RunScene : public cocos2d::Layer
 {

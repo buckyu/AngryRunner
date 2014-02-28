@@ -1,6 +1,6 @@
-#include "AppDelegate.h"
-#include "HelloWorldScene.h"
-#include "RunScene.h"
+#include "../../Classes/AppDelegate.h"
+#include "../../Classes/HelloWorldScene.h"
+#include "../../Classes/RunScene.h"
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {

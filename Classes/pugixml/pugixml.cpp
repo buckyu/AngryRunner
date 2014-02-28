@@ -21,7 +21,7 @@
 #include <string.h>
 #include <assert.h>
 #include <wchar.h>
-
+#define PUGIXML_NO_EXCEPTIONS 
 #ifndef PUGIXML_NO_XPATH
 #	include <math.h>
 #	include <float.h>
@@ -5719,7 +5719,7 @@ PUGI__NS_BEGIN
 				assert(error_handler);
 				longjmp(*error_handler, 1);
 			#else
-				throw std::bad_alloc();
+                throw std::bad_alloc();
 			#endif
 			}
 

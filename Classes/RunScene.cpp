@@ -1,6 +1,6 @@
-#include "RunScene.h"
-#import "PlayerObject.h"
-#import "B2DebugDrawLayer.h"
+#include "../../Classes/RunScene.h"
+#import "../../Classes/PlayerObject.h"
+#import "../../Classes/B2DebugDrawLayer.h"
 
 
 #define PTM_RATIO 32
