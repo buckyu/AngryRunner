@@ -2,7 +2,6 @@
 #import "../../Classes/PlayerObject.h"
 #import "../../Classes/B2DebugDrawLayer.h"
 
-
 #define PTM_RATIO 32
 
 USING_NS_CC;
@@ -56,20 +55,45 @@ bool RunScene::init()
     this->map_layer->addChild(player->sprite_player);
     
     
+    
+   
+    
     // load map
     this->map_tile = TMXTiledMap::create("map.tmx");
     this->map_layer->addChild(map_tile,10);
+    
+    
+    
+    
     
     // get y-offset
     map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
     
     // parse map for physics object
     std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( "map.tmx" );
+    //std::string tmx_full_path = "/assets/map.tmx";
+    CCLOG("XML PATH: %s ",tmx_full_path.c_str());
+
+    
+    long size = 0;
+    unsigned char * posdataLoc = CCFileUtils::sharedFileUtils() -> getFileData( tmx_full_path.c_str(), "r",&size );
+    
+    std::string str;
+    str.append(reinterpret_cast<const char*>(posdataLoc));
+    
+    CCLOG("readed string: %s",str.c_str());
+    
+    //std::string tmx_full_path = "map.tmx";
     pugi::xml_document doc;
-    pugi::xml_parse_result result = doc.load_file( tmx_full_path.c_str() );
+    
+    pugi::xml_parse_result result = doc.load(str.c_str());
+   // pugi::xml_parse_result result = doc.load_file( tmx_full_path.c_str() );
+    
+    CCLOG("XML READ: %s",result.description());
     for (pugi::xml_node tool = doc.child("map").child("objectgroup").child("object"); tool; tool = tool.next_sibling("object"))
     {
         this->makePhysicPoligonGround(tool,0);
+        CCLOG("XML READ: OK");
     }
 
     // set updater

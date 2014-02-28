@@ -3,32 +3,32 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/GLES-Render.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Box2D.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/assert.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/api-level.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/assert.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Draw.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/math.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/stdint.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/_types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/_types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/posix_types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/stddef.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/compiler.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/posix_types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/kernel.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/limits.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/limits.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/limits.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/internal_types.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/limits.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/syslimits.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/page.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/math.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/stdint.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/limits.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/page.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Timer.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2CircleShape.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/Shapes/b2Shape.h \
@@ -40,9 +40,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2BroadPhase.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2DynamicTree.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/memory.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/string.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/malloc.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/memory.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/string.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/malloc.h \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2Distance.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Collision/b2TimeOfImpact.h \
@@ -77,10 +77,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccConfig.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCPlatformConfig.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCPlatformDefine.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/log.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/log.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccMacros.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCConsole.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/select.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/select.h \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/thread \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/mutex \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCStdC.h \
@@ -106,10 +106,10 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCArray.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccCArray.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCGL.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2platform.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2ext.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccGLStateCache.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCGLProgram.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCScriptSupport.h \
@@ -154,7 +154,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/renderer/CCRenderCommandPool.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCDictionary.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/uthash.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/inttypes.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/inttypes.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCArray.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCString.h \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/sstream \
@@ -275,57 +275,57 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Settings.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/assert.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/assert.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/cdefs_elf.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/cdefs_elf.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/api-level.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/api-level.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Draw.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Math.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/math.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/math.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/stdint.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/stdint.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/_types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/_types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/_types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/_types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/posix_types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/posix_types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/stddef.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/stddef.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/compiler.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/compiler.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/posix_types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/posix_types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/kernel.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/kernel.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/sysmacros.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/sysmacros.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/limits.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/limits.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/limits.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/limits.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/linux/limits.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/linux/limits.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/internal_types.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/internal_types.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/machine/limits.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/machine/limits.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/syslimits.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/syslimits.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/asm/page.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/asm/page.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2Timer.h:
 
@@ -349,11 +349,11 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Common/b2GrowableStack.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/memory.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/memory.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/string.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/string.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/malloc.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/malloc.h:
 
 /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/algorithm:
 
@@ -423,13 +423,13 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCPlatformDefine.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/log.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/log.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccMacros.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCConsole.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/sys/select.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/sys/select.h:
 
 /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/thread:
 
@@ -481,13 +481,13 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCGL.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2platform.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2platform.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/KHR/khrplatform.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/KHR/khrplatform.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/GLES2/gl2ext.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/GLES2/gl2ext.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccGLStateCache.h:
 
@@ -577,7 +577,7 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/GLES-Render.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/uthash.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/inttypes.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/inttypes.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCArray.h:
 
