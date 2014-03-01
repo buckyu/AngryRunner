@@ -3,6 +3,9 @@
 #define WORLD_TO_SCREEN(n) ((n) * PTM_RATIO)
 #define B2_ANGLE_TO_COCOS_ROTATION(n) (-1 * CC_RADIANS_TO_DEGREES(n))
 #define COCOS_ROTATION_TO_B2_ANGLE(n) (CC_DEGREES_TO_RADIANS(-1 * n))
+
+
+
 #include "../../Classes/PlayerObject.h"
 #include "../../Classes/Setting.h"
 void PlayerObject::init(float poz_x, float poz_y)
@@ -10,11 +13,11 @@ void PlayerObject::init(float poz_x, float poz_y)
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
 
-    sprite_player = SpriteBatchNode::create("sprite_player.png");
+    sprite_player = SpriteBatchNode::create("player_sprite.png");
     cache = SpriteFrameCache::sharedSpriteFrameCache();
-    cache->addSpriteFramesWithFile("sprite_player.plist");
+    cache->addSpriteFramesWithFile("player_sprite.plist");
     
-    player_sprite = Sprite::createWithSpriteFrameName("01.png");
+    player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");
     player_sprite->setPosition(Point(poz_x, poz_y));
     player_sprite->setScale(1.0);
     sprite_player->addChild(player_sprite);
@@ -22,9 +25,13 @@ void PlayerObject::init(float poz_x, float poz_y)
     char str[100] = {0};
     for(int i = 1; i < 8; i++)
     {
-        sprintf(str, "%02d.png", i);
-        spriteFrames.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
+        sprintf(str, "p_walk_%02d.png", i);
+        spriteFramesRun.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
     }
+    
+    spriteFramesFly.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( "p_jump.png" ) );
+    
+    
 }
 
 void PlayerObject::initPhysic(b2World* world)
@@ -39,7 +46,7 @@ void PlayerObject::initPhysic(b2World* world)
 	body = world->CreateBody(&playerBodyDef);
     
     b2CircleShape circleShape;
-	circleShape.m_radius = 0.7;
+	circleShape.m_radius = 1.4;
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = &circleShape;
 	fixtureDef.density = 10.0f;
@@ -50,19 +57,50 @@ void PlayerObject::initPhysic(b2World* world)
     world->SetContactListener(this);
 }
 
-void PlayerObject::startRunAnimation()
+
+void PlayerObject::tryStartRunAnimation()
 {
-    animation_run = Animation::createWithSpriteFrames(spriteFrames, 0.1f);
-    player_sprite->runAction( CCRepeatForever::create( CCAnimate::create(this->animation_run) ) );
+    Action *act = player_sprite->getActionByTag( this->ANIMATION_RUN_TAG );
+    if( act == NULL ) this->StartRunAnimation();
+    else if(act->isDone()) this->StartRunAnimation();
 }
 
+void PlayerObject::StartRunAnimation()
+{
+    this->stopAllLoopingAnimations();
+    animation_running = RepeatForever::create( Animate::create( Animation::createWithSpriteFrames(spriteFramesRun, 0.05f) ) );
+    animation_running->setTag( this->ANIMATION_RUN_TAG );
+    player_sprite->runAction( animation_running );
+}
 
+void PlayerObject::tryStartFlyAnimation()
+{
+    Action *act = player_sprite->getActionByTag(this->ANIMATION_FLY_TAG);
+    if( act == NULL ) this->StartFlyAnimation();
+    else if(act->isDone()) this->StartFlyAnimation();
+}
+
+void PlayerObject::StartFlyAnimation()
+{
+    this->stopAllLoopingAnimations();
+    animation_flying = RepeatForever::create( Animate::create( Animation::createWithSpriteFrames(spriteFramesFly, 0.05f) ) );
+    animation_flying->setTag(this->ANIMATION_FLY_TAG);
+    player_sprite->runAction( animation_flying );
+}
+
+void PlayerObject::stopAllLoopingAnimations()
+{
+    player_sprite->stopActionByTag(this->ANIMATION_RUN_TAG);
+    player_sprite->stopActionByTag(this->ANIMATION_FLY_TAG);
+}
 
 void PlayerObject::jump() {
-    
+    this->tryStartRunAnimation();
     // first jump
     if ( this->jumps_count == 0 )
     {
+        this->tryStartFlyAnimation();
+        
         auto now_velocity = this->body->GetLinearVelocity();
         auto now_speed = now_velocity.x;
         
@@ -76,6 +114,8 @@ void PlayerObject::jump() {
     // secind jump
     if ( this->jumps_count == 1 )
     {
+        this->tryStartFlyAnimation();
+        
         b2Vec2 impulse = b2Vec2(0.0f, 50.0f);
         body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),false);
         
@@ -96,8 +136,6 @@ void PlayerObject::reDraw()
 
 void PlayerObject::reCalc()
 {
-   
-    
     auto now_velocity = this->body->GetLinearVelocity();
     auto now_speed = now_velocity.x;
     
@@ -107,25 +145,20 @@ void PlayerObject::reCalc()
     }
     else
     {
-        b2Vec2 impulse = b2Vec2(3.0f, 0.0f);
+        b2Vec2 impulse = b2Vec2(5.0f, 0.0f);
         body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),false);
-       // this->body->SetLinearVelocity(impulse);
     }
-    //CCLOG("SPEED: %f",now_speed);
-    
-
-    
 }
 
 void PlayerObject::BeginContact(b2Contact* contact)
 {
-    
+    if( this->isContactGrondAndPlayer(contact) )
+        this->tryStartRunAnimation();
 }
 void PlayerObject::EndContact(b2Contact* contact)
 {
     
 }
-
 
 void PlayerObject::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
 {
@@ -134,19 +167,21 @@ void PlayerObject::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse
 
 void PlayerObject::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
 {
+    if( this->isContactGrondAndPlayer(contact) )
+        this->jumps_count = 0;
+}
+
+bool PlayerObject::isContactGrondAndPlayer(b2Contact* contact)
+{
     int obj_a = (int)contact->GetFixtureA()->GetBody()->GetUserData();
     int obj_b = (int)contact->GetFixtureB()->GetBody()->GetUserData();
-    
     
     if ( contact->IsTouching() )
         if( ( obj_a == OBJ_TYPE_GROUND && obj_b == OBJ_TYPE_PLAYER ) ||
            ( obj_b == OBJ_TYPE_GROUND && obj_a == OBJ_TYPE_PLAYER ) )
-        {
-            this->jumps_count = 0;
-        }
-
+            return true;
+    
+    return false;
 }
-
-
 
 

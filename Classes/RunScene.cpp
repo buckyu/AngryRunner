@@ -50,7 +50,7 @@ bool RunScene::init()
     
     
     player = new PlayerObject();
-    player->init(600,500);
+    player->init(600,1000);
     player->initPhysic(world);
     this->map_layer->addChild(player->sprite_player);
     
@@ -59,7 +59,7 @@ bool RunScene::init()
    
     
     // load map
-    this->map_tile = TMXTiledMap::create("map.tmx");
+    this->map_tile = TMXTiledMap::create("map_01.tmx");
     this->map_layer->addChild(map_tile,10);
     
     
@@ -70,18 +70,14 @@ bool RunScene::init()
     map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
     
     // parse map for physics object
-    std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( "map.tmx" );
+    std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( "map_01.tmx" );
     //std::string tmx_full_path = "/assets/map.tmx";
-    CCLOG("XML PATH: %s ",tmx_full_path.c_str());
 
-    
     long size = 0;
     unsigned char * posdataLoc = CCFileUtils::sharedFileUtils() -> getFileData( tmx_full_path.c_str(), "r",&size );
     
     std::string str;
     str.append(reinterpret_cast<const char*>(posdataLoc));
-    
-    CCLOG("readed string: %s",str.c_str());
     
     //std::string tmx_full_path = "map.tmx";
     pugi::xml_document doc;
@@ -93,7 +89,6 @@ bool RunScene::init()
     for (pugi::xml_node tool = doc.child("map").child("objectgroup").child("object"); tool; tool = tool.next_sibling("object"))
     {
         this->makePhysicPoligonGround(tool,0);
-        CCLOG("XML READ: OK");
     }
 
     // set updater
