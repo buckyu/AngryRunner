@@ -39,7 +39,7 @@ bool RunScene::init()
    
 
     
-    b2Vec2 gravity = b2Vec2(0.0f, -10.0f);
+    b2Vec2 gravity = b2Vec2(0.0f, -20.0f);
     world = new b2World(gravity);
 
     map_layer->addChild(B2DebugDrawLayer::create(world, PTM_RATIO), 9999);
@@ -52,7 +52,7 @@ bool RunScene::init()
     player = new PlayerObject();
     player->init(600,1000);
     player->initPhysic(world);
-    this->map_layer->addChild(player->sprite_player);
+    this->map_layer->addChild(player->spriteSheet);
     
     
     

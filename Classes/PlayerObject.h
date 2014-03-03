@@ -36,7 +36,7 @@ class PlayerObject : public b2ContactListener
         void jump();
         void moveRight();
         Sprite *player_sprite;
-        SpriteBatchNode* sprite_player;
+        SpriteBatchNode* spriteSheet;
     
     
     

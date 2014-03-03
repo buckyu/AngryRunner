@@ -10,17 +10,14 @@
 #include "../../Classes/Setting.h"
 void PlayerObject::init(float poz_x, float poz_y)
 {
-    Size visibleSize = Director::getInstance()->getVisibleSize();
-    Point origin = Director::getInstance()->getVisibleOrigin();
-
-    sprite_player = SpriteBatchNode::create("player_sprite.png");
+    spriteSheet = SpriteBatchNode::create("player_sprite.png");
     cache = SpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("player_sprite.plist");
     
     player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");
     player_sprite->setPosition(Point(poz_x, poz_y));
     player_sprite->setScale(1.0);
-    sprite_player->addChild(player_sprite);
+    spriteSheet->addChild(player_sprite);
 
     char str[100] = {0};
     for(int i = 1; i < 8; i++)
@@ -145,8 +142,8 @@ void PlayerObject::reCalc()
     }
     else
     {
-        b2Vec2 impulse = b2Vec2(5.0f, 0.0f);
-        body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),false);
+        b2Vec2 impulse = b2Vec2(50.0f, 0.0f);
+        body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),true);
     }
 }
 

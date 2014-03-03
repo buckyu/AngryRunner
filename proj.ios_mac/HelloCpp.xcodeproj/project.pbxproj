@@ -60,6 +60,7 @@
 		530B89FE18C1482D00D46673 /* map_01.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 530B89FD18C1482D00D46673 /* map_01.tmx */; };
 		530B8A0118C1515700D46673 /* player_sprite.png in Resources */ = {isa = PBXBuildFile; fileRef = 530B89FF18C1515700D46673 /* player_sprite.png */; };
 		530B8A0218C1515700D46673 /* player_sprite.plist in Resources */ = {isa = PBXBuildFile; fileRef = 530B8A0018C1515700D46673 /* player_sprite.plist */; };
+		5324A5BD18C46B6F007CFE5B /* BonusObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5324A5BB18C46B6F007CFE5B /* BonusObject.cpp */; };
 		537634F018BEAF1700BC2044 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 537634EE18BEAF1700BC2044 /* pugixml.cpp */; };
 		53A66DBA18BBC8A100802FEC /* RunScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53A66DB818BBC8A100802FEC /* RunScene.cpp */; };
 		53E0E06218C01AEF00E55D27 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E05E18C01AEF00E55D27 /* HelloWorld.png */; };
@@ -295,6 +296,8 @@
 		530B89FD18C1482D00D46673 /* map_01.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = map_01.tmx; sourceTree = "<group>"; };
 		530B89FF18C1515700D46673 /* player_sprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player_sprite.png; sourceTree = "<group>"; };
 		530B8A0018C1515700D46673 /* player_sprite.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = player_sprite.plist; sourceTree = "<group>"; };
+		5324A5BB18C46B6F007CFE5B /* BonusObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BonusObject.cpp; path = ../Classes/BonusObject.cpp; sourceTree = "<group>"; };
+		5324A5BC18C46B6F007CFE5B /* BonusObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BonusObject.h; path = ../Classes/BonusObject.h; sourceTree = "<group>"; };
 		537634ED18BEAF1700BC2044 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		537634EE18BEAF1700BC2044 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		537634EF18BEAF1700BC2044 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
@@ -386,11 +389,7 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				537634EC18BEAF1700BC2044 /* pugixml */,
-				53FCB1FD18BD7036004F8996 /* B2DebugDrawLayer.cpp */,
-				53FCB1FE18BD7036004F8996 /* B2DebugDrawLayer.h */,
-				53FCB1FF18BD7036004F8996 /* GLES-Render.cpp */,
-				53FCB20018BD7036004F8996 /* GLES-Render.h */,
+				5324A5C418C46D8E007CFE5B /* Libs */,
 				53FCB1CC18BD201C004F8996 /* Objects */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
@@ -399,6 +398,8 @@
 				53A66DB818BBC8A100802FEC /* RunScene.cpp */,
 				53A66DB918BBC8A100802FEC /* RunScene.h */,
 				53E0E05718BFE33900E55D27 /* Setting.h */,
+				5324A5BB18C46B6F007CFE5B /* BonusObject.cpp */,
+				5324A5BC18C46B6F007CFE5B /* BonusObject.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -514,6 +515,18 @@
 			name = Icons;
 			path = ios;
 			sourceTree = SOURCE_ROOT;
+		};
+		5324A5C418C46D8E007CFE5B /* Libs */ = {
+			isa = PBXGroup;
+			children = (
+				53FCB1FD18BD7036004F8996 /* B2DebugDrawLayer.cpp */,
+				53FCB1FE18BD7036004F8996 /* B2DebugDrawLayer.h */,
+				53FCB1FF18BD7036004F8996 /* GLES-Render.cpp */,
+				53FCB20018BD7036004F8996 /* GLES-Render.h */,
+				537634EC18BEAF1700BC2044 /* pugixml */,
+			);
+			name = Libs;
+			sourceTree = "<group>";
 		};
 		537634EC18BEAF1700BC2044 /* pugixml */ = {
 			isa = PBXGroup;
@@ -791,6 +804,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				53FCB20218BD7036004F8996 /* GLES-Render.cpp in Sources */,
 				53FCB1D818BD2153004F8996 /* PlayerObject.cpp in Sources */,
+				5324A5BD18C46B6F007CFE5B /* BonusObject.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
