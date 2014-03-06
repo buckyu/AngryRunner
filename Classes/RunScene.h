@@ -25,11 +25,12 @@ class RunScene : public cocos2d::Layer
     Scene* scene;
     Layer* main_layer;
     Layer* map_layer;
+    Layer* bg_layer;
     
     PlayerObject *player_object;
     
     TMXTiledMap *map_tile;
-    TMXLayer *map_background;
+    TMXTiledMap *bg_tile;
     
     cocos2d::Size creenSize;
 	cocos2d::TMXTiledMap *tileMapNode;

@@ -11,7 +11,7 @@ Scene* RunScene::createScene(std::string map_id)
     this->map_id = map_id;
     this->scene = Scene::create();
     this->main_layer = Layer::create();
-    this->scene->addChild(main_layer,2);
+    this->scene->addChild(main_layer,3);
     
     this->createAll();
     Director::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(RunScene::update),this,1.0f / 60.0f,false);
@@ -22,7 +22,10 @@ Scene* RunScene::createScene(std::string map_id)
 void RunScene::createAll()
 {
     map_layer = Layer::create();
-    this->scene->addChild(map_layer,1);
+    this->scene->addChild(map_layer,2);
+    
+    bg_layer = Layer::create();
+    this->scene->addChild(bg_layer,1);
 
     screen_visible_size = Director::getInstance()->getVisibleSize();
     screen_origin_size = Director::getInstance()->getVisibleOrigin();
@@ -39,15 +42,25 @@ void RunScene::createMap()
     stringStream << this->map_id << ".tmx";
     std::string map_file = stringStream.str();
 
+    stringStream.str(""); stringStream.clear();
+    stringStream << this->map_id << "_bg.tmx";
+    std::string bg_file = stringStream.str();
     
     physic_world = new b2World( b2Vec2(0.0f, -20.0f) );
     map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
     
+    
     // load tiled map
     this->map_tile = TMXTiledMap::create( map_file );
- 
-    
     this->map_layer->addChild(map_tile,10);
+    
+    // load tiles bg
+    this->bg_tile = TMXTiledMap::create( bg_file );
+    bg_tile->setScale(3.0F);
+    this->bg_layer->addChild(bg_tile,10);
+   
+
+    
     
     // get xy-offset
     map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
@@ -77,9 +90,6 @@ void RunScene::createMap()
                 this->makePhysicPoligonGround(tool,0);
             }
     }
-    
-    
-    
 }
 
 void RunScene::createPlayer()
@@ -135,7 +145,9 @@ void RunScene::update(float dt)
     this->map_layer->setPositionX( round( mapOffset_x - 0.5f ) );
     this->map_layer->setPositionY( round( mapOffset_y - 0.5f ) );
     
-   
+    this->bg_layer->setPositionX( round( mapOffset_x / 5.0f - 0.5f ) );
+    this->bg_layer->setPositionY( -1 * round( mapOffset_y / 10.0f - 0.5f )  - this->screen_visible_size.height / 3 );
+
 }
 
 void RunScene::buttonJumpCallback(Object* pSender)
