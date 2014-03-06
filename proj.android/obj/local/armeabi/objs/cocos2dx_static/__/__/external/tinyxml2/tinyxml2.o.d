@@ -6,7 +6,7 @@ obj/local/armeabi/objs/cocos2dx_static/__/__/external/tinyxml2/tinyxml2.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/ccConfig.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/../base/CCPlatformConfig.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCPlatformDefine.h \
- /Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/log.h \
+ /Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/log.h \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/cctype \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/climits \
  /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/cstdio \
@@ -28,7 +28,7 @@ obj/local/armeabi/objs/cocos2dx_static/__/__/external/tinyxml2/tinyxml2.o: \
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/platform/android/CCPlatformDefine.h:
 
-/Users/romanparamonov/android-ndk/platforms/android-9/arch-arm/usr/include/android/log.h:
+/Users/romanparamonov/android-ndk/platforms/android-14/arch-arm/usr/include/android/log.h:
 
 /Users/romanparamonov/android-ndk/sources/cxx-stl/gnu-libstdc++/4.8/include/cctype:
 

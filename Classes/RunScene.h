@@ -9,31 +9,45 @@
 
 class RunScene : public cocos2d::Layer
 {
-    float map_tmx_offset_y;
-    TMXTiledMap *map_tile;
-    TMXLayer *map_background;
+    bool IS_LOADED = false;
     
+    std::string map_id;
+    
+    float map_tmx_offset_y;
+    float map_tmx_offset_x;
+    
+    Size screen_visible_size;
+    Point screen_origin_size;
+    
+    b2World* physic_world;
+  
+    
+    Scene* scene;
+    Layer* main_layer;
     Layer* map_layer;
     
-    PlayerObject *player;
-    b2World* world;
-    b2ContactListener *contactListener;
- 
-    Size visibleSize;
-    Point origin;
+    PlayerObject *player_object;
+    
+    TMXTiledMap *map_tile;
+    TMXLayer *map_background;
     
     cocos2d::Size creenSize;
 	cocos2d::TMXTiledMap *tileMapNode;
  
     void buttonJumpCallback(Object* pSender);
-    void update(float dt);
+    virtual void update(float dt);
     void makePhysicPoligonGround(pugi::xml_node tool,int mode);
     std::vector<std::string> split(std::string str, std::string delim);
     
     public:
-        static cocos2d::Scene* createScene();
-        bool init();
-        CREATE_FUNC(RunScene);
+        Scene* createScene(std::string map_id);
+       // CREATE_FUNC(RunScene);
+    
+    private:
+        void createAll();
+        void createMap();
+        void createControls();
+        void createPlayer();
 };
 
 #endif 

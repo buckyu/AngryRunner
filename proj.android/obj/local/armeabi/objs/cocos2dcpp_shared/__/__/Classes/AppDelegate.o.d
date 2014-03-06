@@ -211,7 +211,6 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCComponent.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCComponentContainer.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCDeprecated.h \
- /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/HelloWorldScene.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/RunScene.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/pugixml/pugixml.hpp \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/pugixml/pugiconfig.hpp \
@@ -677,8 +676,6 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCComponentContainer.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/cocos/2d/CCDeprecated.h:
-
-/Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/HelloWorldScene.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/RunScene.h:
 

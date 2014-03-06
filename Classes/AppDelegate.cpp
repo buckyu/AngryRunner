@@ -1,5 +1,4 @@
 #include "../../Classes/AppDelegate.h"
-#include "../../Classes/HelloWorldScene.h"
 #include "../../Classes/RunScene.h"
 USING_NS_CC;
 
@@ -17,10 +16,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setOpenGLView(eglView);
     director->setDisplayStats(true);
     director->setAnimationInterval(1.0 / 60);
-
-
-    auto runScene = RunScene::createScene();
-    director->runWithScene(runScene);
+    
+CCDirector::sharedDirector()->setProjection(kCCDirectorProjection2D);
+    
+    auto run_scene = new RunScene();
+    director->runWithScene(run_scene->createScene("map_01"));
+    
     return true;
 }
 
@@ -37,6 +38,4 @@ void AppDelegate::applicationDidEnterBackground() {
 void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
-    // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
 }

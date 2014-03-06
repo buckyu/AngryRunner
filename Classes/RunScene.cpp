@@ -6,134 +6,148 @@
 
 USING_NS_CC;
 
-Scene* RunScene::createScene()
+Scene* RunScene::createScene(std::string map_id)
 {
-    auto scene = Scene::create();
-    auto layer = RunScene::create();
-    scene->addChild(layer);
+    this->map_id = map_id;
+    this->scene = Scene::create();
+    this->main_layer = Layer::create();
+    this->scene->addChild(main_layer,2);
+    
+    this->createAll();
+    Director::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(RunScene::update),this,1.0f / 60.0f,false);
+    this->IS_LOADED = true;
     return scene;
 }
 
-bool RunScene::init()
+void RunScene::createAll()
 {
-    if ( !Layer::init() )  return false;
-    
     map_layer = Layer::create();
-    addChild(map_layer);
+    this->scene->addChild(map_layer,1);
+
+    screen_visible_size = Director::getInstance()->getVisibleSize();
+    screen_origin_size = Director::getInstance()->getVisibleOrigin();
+
+    this->createControls();
+    this->createMap();
+    this->createPlayer();
+}
+
+
+void RunScene::createMap()
+{
+    std::ostringstream stringStream;
+    stringStream << this->map_id << ".tmx";
+    std::string map_file = stringStream.str();
+
     
-    visibleSize = Director::getInstance()->getVisibleSize();
-    origin = Director::getInstance()->getVisibleOrigin();
+    physic_world = new b2World( b2Vec2(0.0f, -20.0f) );
+    map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
+    
+    // load tiled map
+    this->map_tile = TMXTiledMap::create( map_file );
+ 
+    
+    this->map_layer->addChild(map_tile,10);
+    
+    // get xy-offset
+    map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
+    map_tmx_offset_x = map_tile->getTileSize().width  * map_tile->getMapSize().width / PTM_RATIO ;
+    
+    // read tiled map structure to str
+    long size = 0;
+    std::string str;
+    std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( map_file );
+    unsigned char * posdataLoc = CCFileUtils::sharedFileUtils() -> getFileData( tmx_full_path.c_str(), "r", &size );
+    str.append(reinterpret_cast<const char*>(posdataLoc));
+    
+    // parse readed xml map data
+    pugi::xml_document doc;
+    pugi::xml_parse_result result = doc.load(str.c_str());
+    
+    CCLOG("XML READ: %s",result.description());
+
+    // get all object groups
+    for (pugi::xml_node object_group = doc.child("map").child("objectgroup"); object_group; object_group = object_group.next_sibling("objectgroup"))
+    {
+        std::string object_type = object_group.attribute("name").value();
+        
+        if ( object_type == "ground" || object_type == "rock" )
+            for (pugi::xml_node tool = object_group.child("object"); tool; tool = tool.next_sibling("object"))
+            {
+                this->makePhysicPoligonGround(tool,0);
+            }
+    }
     
     
-    auto closeItem = MenuItemImage::create(
+    
+}
+
+void RunScene::createPlayer()
+{
+    player_object = new PlayerObject();
+    player_object->init(600,1000);
+    player_object->initPhysic(physic_world);
+    this->map_layer->addChild(player_object->spriteSheet);
+}
+
+void RunScene::createControls()
+{
+    auto jump_item = MenuItemImage::create(
                                            "button-jump.png",
                                            "button-jump-select.png",
                                            CC_CALLBACK_1(RunScene::buttonJumpCallback, this));
     
-	closeItem->setPosition(Point(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                 origin.y + closeItem->getContentSize().height/2));
+	jump_item->setPosition(Point(screen_origin_size.x + screen_visible_size.width - jump_item->getContentSize().width/2 ,
+                                 screen_origin_size.y + jump_item->getContentSize().height/2));
 
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Point::ZERO);
-    this->addChild(menu, 1);
-   
-
-    
-    b2Vec2 gravity = b2Vec2(0.0f, -20.0f);
-    world = new b2World(gravity);
-
-    map_layer->addChild(B2DebugDrawLayer::create(world, PTM_RATIO), 9999);
-    
-    contactListener = new b2ContactListener();
-    world->SetContactListener(contactListener);
-
-    
-    
-    player = new PlayerObject();
-    player->init(600,1000);
-    player->initPhysic(world);
-    this->map_layer->addChild(player->spriteSheet);
-    
-    
-    
-   
-    
-    // load map
-    this->map_tile = TMXTiledMap::create("map_01.tmx");
-    this->map_layer->addChild(map_tile,10);
-    
-    
-    
-    
-    
-    // get y-offset
-    map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
-    
-    // parse map for physics object
-    std::string tmx_full_path = CCFileUtils::sharedFileUtils()->fullPathForFilename( "map_01.tmx" );
-    //std::string tmx_full_path = "/assets/map.tmx";
-
-    long size = 0;
-    unsigned char * posdataLoc = CCFileUtils::sharedFileUtils() -> getFileData( tmx_full_path.c_str(), "r",&size );
-    
-    std::string str;
-    str.append(reinterpret_cast<const char*>(posdataLoc));
-    
-    //std::string tmx_full_path = "map.tmx";
-    pugi::xml_document doc;
-    
-    pugi::xml_parse_result result = doc.load(str.c_str());
-   // pugi::xml_parse_result result = doc.load_file( tmx_full_path.c_str() );
-    
-    CCLOG("XML READ: %s",result.description());
-    for (pugi::xml_node tool = doc.child("map").child("objectgroup").child("object"); tool; tool = tool.next_sibling("object"))
-    {
-        this->makePhysicPoligonGround(tool,0);
-    }
-
-    // set updater
-    this->schedule(schedule_selector(RunScene::update));
-
-    return true;
+    auto contol_menu = Menu::create(jump_item, NULL);
+    contol_menu->setPosition(Point::ZERO);
+    this->main_layer->addChild(contol_menu, 999);
 }
 
 void RunScene::update(float dt)
 {
+    if( ! IS_LOADED ) return;
+    
     int velocityIterations = 8;
 	int positionIterations = 1;
     
-    world->Step(dt, velocityIterations, positionIterations);
+    physic_world->Step(dt, velocityIterations, positionIterations);
     
-    for (b2Body* b = world->GetBodyList(); b; b = b->GetNext()) {
+    for (b2Body* b = physic_world->GetBodyList(); b; b = b->GetNext()) {
 		if (b->GetUserData() != NULL) {
 			//Synchronize the AtlasSprites position and rotation with the corresponding body
-			//Sprite *myActor = (CCSprite*)b->GetUserData();
-            //myActor->setPosition( b->GetPosition().x * PTM_RATIO , b->GetPosition().y * PTM_RATIO);
-			//myActor->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
-		}	
+//			//Sprite *myActor = (CCSprite*)b->GetUserData();
+//            //myActor->setPosition( b->GetPosition().x * PTM_RATIO , b->GetPosition().y * PTM_RATIO);
+//			//myActor->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
+		}
 	}
-    player->reDraw();
+    player_object->reDraw();
 
-    float player_x = this->player->player_sprite->getPositionX();
-    float player_y = this->player->player_sprite->getPositionY();
+    float player_x = this->player_object->player_sprite->getPositionX();
+    float player_y = this->player_object->player_sprite->getPositionY();
     
-    float mapOffset_x = visibleSize.width - player_x - visibleSize.width / 2;
-    float mapOffset_y = visibleSize.height - player_y - visibleSize.height / 2;
+    float mapOffset_x = screen_visible_size.width - player_x - screen_visible_size.width / 2;
+    float mapOffset_y = screen_visible_size.height - player_y - screen_visible_size.height / 2;
+    
+    
 
-    this->map_layer->setPositionX(mapOffset_x);
-    this->map_layer->setPositionY(mapOffset_y);
+    this->map_layer->setPositionX( round( mapOffset_x - 0.5f ) );
+    this->map_layer->setPositionY( round( mapOffset_y - 0.5f ) );
+    
+   
 }
 
 void RunScene::buttonJumpCallback(Object* pSender)
 {
-    player->jump();
+    player_object->jump();
 }
 
 void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
 {
 	b2BodyDef bodyDef;
     bodyDef.position.Set( 0 / PTM_RATIO, 0 / PTM_RATIO );
-	b2Body *body = world->CreateBody(&bodyDef);
+	b2Body *body = physic_world->CreateBody(&bodyDef);
     
     b2PolygonShape shape;
     std::vector<b2Vec2> shape_points;
@@ -166,10 +180,12 @@ void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
     fixtureDef.shape = &shape;
 	fixtureDef.density = 1;
 	fixtureDef.friction = 0.4;
-	fixtureDef.restitution = 0.1f;
+	fixtureDef.restitution = 0.0f;
     body->SetUserData( (void*)OBJ_TYPE_GROUND );
 	body->CreateFixture(&fixtureDef);
 }
+
+
 
 std::vector<std::string> RunScene::split(std::string str, std::string delim)
 {
