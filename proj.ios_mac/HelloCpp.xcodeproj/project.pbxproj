@@ -62,6 +62,8 @@
 		535E84E718C9340B002154A2 /* map_01_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 535E84E518C9340B002154A2 /* map_01_bg.png */; };
 		535E84E818C9340B002154A2 /* map_01_bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 535E84E618C9340B002154A2 /* map_01_bg.tmx */; };
 		537634F018BEAF1700BC2044 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 537634EE18BEAF1700BC2044 /* pugixml.cpp */; };
+		5381729F18CFF0AB003C2093 /* tr_mantrap.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5381729D18CFF0AB003C2093 /* tr_mantrap.plist */; };
+		538172A018CFF0AB003C2093 /* tr_mantrap.png in Resources */ = {isa = PBXBuildFile; fileRef = 5381729E18CFF0AB003C2093 /* tr_mantrap.png */; };
 		53A66DBA18BBC8A100802FEC /* RunScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53A66DB818BBC8A100802FEC /* RunScene.cpp */; };
 		53E0E06218C01AEF00E55D27 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E05E18C01AEF00E55D27 /* HelloWorld.png */; };
 		53E0E06F18C02A2000E55D27 /* button-jump.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E06D18C02A2000E55D27 /* button-jump.png */; };
@@ -301,6 +303,8 @@
 		537634ED18BEAF1700BC2044 /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
 		537634EE18BEAF1700BC2044 /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
 		537634EF18BEAF1700BC2044 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		5381729D18CFF0AB003C2093 /* tr_mantrap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tr_mantrap.plist; sourceTree = "<group>"; };
+		5381729E18CFF0AB003C2093 /* tr_mantrap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tr_mantrap.png; sourceTree = "<group>"; };
 		53A66DB818BBC8A100802FEC /* RunScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RunScene.cpp; path = ../Classes/RunScene.cpp; sourceTree = "<group>"; };
 		53A66DB918BBC8A100802FEC /* RunScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunScene.h; path = ../Classes/RunScene.h; sourceTree = "<group>"; };
 		53E0E05718BFE33900E55D27 /* Setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = ../Classes/Setting.h; sourceTree = "<group>"; };
@@ -548,6 +552,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5381729D18CFF0AB003C2093 /* tr_mantrap.plist */,
+				5381729E18CFF0AB003C2093 /* tr_mantrap.png */,
 				530B89FD18C1482D00D46673 /* map_01.tmx */,
 				530B89FB18C1482600D46673 /* tiles_spritesheet.png */,
 				53E0E06D18C02A2000E55D27 /* button-jump.png */,
@@ -778,6 +784,8 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				53E0E06218C01AEF00E55D27 /* HelloWorld.png in Resources */,
 				535E84E718C9340B002154A2 /* map_01_bg.png in Resources */,
+				5381729F18CFF0AB003C2093 /* tr_mantrap.plist in Resources */,
+				538172A018CFF0AB003C2093 /* tr_mantrap.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

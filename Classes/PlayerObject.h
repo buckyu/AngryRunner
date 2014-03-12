@@ -11,6 +11,8 @@ class PlayerObject : public b2ContactListener
     int ANIMATION_RUN_TAG = 1;
     int ANIMATION_FLY_TAG = 2;
     
+    
+    bool IS_ALIVE   = true;
     bool IS_RUNNING = false;
     int jumps_count = 0;
   
@@ -24,7 +26,9 @@ class PlayerObject : public b2ContactListener
     Vector<SpriteFrame*> spriteFramesFly;
     
     b2Body* body;
-    
+
+    int timer_toAlive = 0;
+    int timer_toImune = 0;
     
     void reCalc();
     
@@ -37,26 +41,18 @@ class PlayerObject : public b2ContactListener
         void moveRight();
         Sprite *player_sprite;
         SpriteBatchNode* spriteSheet;
-    
-    
-    
+
     private:
         void BeginContact(b2Contact* contact);
         void EndContact(b2Contact* contact);
         void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
         void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
-    
         void tryStartRunAnimation();
         void StartRunAnimation();
-    
         void tryStartFlyAnimation();
         void StartFlyAnimation();
-    
         void stopAllLoopingAnimations();
-    
         bool isContactGrondAndPlayer(b2Contact* contact);
 };
-
-
 
 #endif

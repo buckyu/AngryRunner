@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>mantrap_0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{3, 68}, {194, 42}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -34}</string>
+			<key>spriteSize</key>
+			<string>{194, 42}</string>
+			<key>spriteSourceSize</key>
+			<string>{200, 110}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 212}, {194, 42}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>mantrap_1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{8, 41}, {184, 64}}</string>
+			<key>spriteOffset</key>
+			<string>{0, -18}</string>
+			<key>spriteSize</key>
+			<string>{184, 64}</string>
+			<key>spriteSourceSize</key>
+			<string>{200, 110}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{114, 0}, {184, 64}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>mantrap_2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{19, 15}, {154, 90}}</string>
+			<key>spriteOffset</key>
+			<string>{-4, -5}</string>
+			<key>spriteSize</key>
+			<string>{154, 90}</string>
+			<key>spriteSourceSize</key>
+			<string>{200, 110}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{70, 106}, {154, 90}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>mantrap_3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{40, 0}, {112, 104}}</string>
+			<key>spriteOffset</key>
+			<string>{-4, 3}</string>
+			<key>spriteSize</key>
+			<string>{112, 104}</string>
+			<key>spriteSourceSize</key>
+			<string>{200, 110}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {112, 104}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>mantrap_4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{62, 0}, {68, 104}}</string>
+			<key>spriteOffset</key>
+			<string>{-4, 3}</string>
+			<key>spriteSize</key>
+			<string>{68, 104}</string>
+			<key>spriteSourceSize</key>
+			<string>{200, 110}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 106}, {68, 104}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.6.0</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{512, 256}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>tr_mantrap</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>tr_mantrap</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>

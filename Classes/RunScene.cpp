@@ -1,9 +1,7 @@
 #include "../../Classes/RunScene.h"
 #import "../../Classes/PlayerObject.h"
 #import "../../Classes/B2DebugDrawLayer.h"
-
 #define PTM_RATIO 32
-
 USING_NS_CC;
 
 Scene* RunScene::createScene(std::string map_id)
@@ -12,7 +10,6 @@ Scene* RunScene::createScene(std::string map_id)
     this->scene = Scene::create();
     this->main_layer = Layer::create();
     this->scene->addChild(main_layer,3);
-    
     this->createAll();
     Director::sharedDirector()->getScheduler()->scheduleSelector(schedule_selector(RunScene::update),this,1.0f / 60.0f,false);
     this->IS_LOADED = true;
@@ -23,18 +20,17 @@ void RunScene::createAll()
 {
     map_layer = Layer::create();
     this->scene->addChild(map_layer,2);
-    
+
     bg_layer = Layer::create();
     this->scene->addChild(bg_layer,1);
-
+ 
     screen_visible_size = Director::getInstance()->getVisibleSize();
     screen_origin_size = Director::getInstance()->getVisibleOrigin();
-
+    
     this->createControls();
     this->createMap();
     this->createPlayer();
 }
-
 
 void RunScene::createMap()
 {
@@ -49,7 +45,6 @@ void RunScene::createMap()
     physic_world = new b2World( b2Vec2(0.0f, -20.0f) );
     map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
     
-    
     // load tiled map
     this->map_tile = TMXTiledMap::create( map_file );
     this->map_layer->addChild(map_tile,10);
@@ -58,10 +53,7 @@ void RunScene::createMap()
     this->bg_tile = TMXTiledMap::create( bg_file );
     bg_tile->setScale(3.0F);
     this->bg_layer->addChild(bg_tile,10);
-   
 
-    
-    
     // get xy-offset
     map_tmx_offset_y = map_tile->getTileSize().height * map_tile->getMapSize().height / PTM_RATIO ;
     map_tmx_offset_x = map_tile->getTileSize().width  * map_tile->getMapSize().width / PTM_RATIO ;
@@ -196,8 +188,6 @@ void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
     body->SetUserData( (void*)OBJ_TYPE_GROUND );
 	body->CreateFixture(&fixtureDef);
 }
-
-
 
 std::vector<std::string> RunScene::split(std::string str, std::string delim)
 {
