@@ -16,7 +16,7 @@ class PlayerObject : public b2ContactListener
     bool IS_RUNNING = false;
     int jumps_count = 0;
   
-    SpriteFrameCache* sprite_cache;
+    SpriteFrameCache* sprite_1cache;
     SpriteFrameCache* cache;
     
     RepeatForever* animation_running;
@@ -33,14 +33,20 @@ class PlayerObject : public b2ContactListener
     void reCalc();
     
     public:
+        void setPosition(float x,float y);
+    
         void init(float poz_x, float poz_y);
         void reDraw();
     
         void initPhysic(b2World* world);
+   
         void jump();
+        int placeMantrap();
+        bool applyShiled();
         void moveRight();
         Sprite *player_sprite;
         SpriteBatchNode* spriteSheet;
+        b2Vec2 getPosition();
 
     private:
         void BeginContact(b2Contact* contact);

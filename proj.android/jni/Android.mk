@@ -15,7 +15,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/pugixml/pugixml.cpp \
                    ../../Classes/pugixml/pugixml.hpp \
                    ../../Classes/pugixml/pugiconfig.hpp \
-                   ../../Classes/BonusObject.cpp
+                   ../../Classes/GameObject.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 

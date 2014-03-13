@@ -5,13 +5,17 @@
 #include "cocos2d.h"
 #import "Box2D/Box2D.h"
 #import "../../Classes/PlayerObject.h"
+#import "../../Classes/GameObject.h"
 #include "../../Classes/Setting.h"
 
 class RunScene : public cocos2d::Layer
 {
     bool IS_LOADED = false;
     
+    
     std::string map_id;
+    
+    std::vector<GameObject> game_objects;
     
     float map_tmx_offset_y;
     float map_tmx_offset_x;
@@ -36,6 +40,10 @@ class RunScene : public cocos2d::Layer
 	cocos2d::TMXTiledMap *tileMapNode;
  
     void buttonJumpCallback(Object* pSender);
+    void buttonMantrapCallback(Object* pSender);
+    void buttonShieldCallback(Object* pSender);
+    void buttonBackCallback(Object* pSender);
+    
     virtual void update(float dt);
     void makePhysicPoligonGround(pugi::xml_node tool,int mode);
     std::vector<std::string> split(std::string str, std::string delim);

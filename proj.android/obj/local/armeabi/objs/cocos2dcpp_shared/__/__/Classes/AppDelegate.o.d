@@ -253,6 +253,8 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2WeldJoint.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2WheelJoint.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/PlayerObject.h \
+ /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/GameObject.h \
+ /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/Setting.h \
  /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/Setting.h
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/AppDelegate.h:
@@ -760,5 +762,9 @@ obj/local/armeabi/objs/cocos2dcpp_shared/__/__/Classes/AppDelegate.o: \
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../Box2D/Dynamics/Joints/b2WheelJoint.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/PlayerObject.h:
+
+/Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/GameObject.h:
+
+/Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/Setting.h:
 
 /Users/romanparamonov/Desktop/AngryRunner/proj.android/../cocos2d/external/Box2D/../../../Classes/Setting.h:

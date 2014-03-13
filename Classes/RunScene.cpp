@@ -43,7 +43,7 @@ void RunScene::createMap()
     std::string bg_file = stringStream.str();
     
     physic_world = new b2World( b2Vec2(0.0f, -20.0f) );
-    map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
+    //map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
     
     // load tiled map
     this->map_tile = TMXTiledMap::create( map_file );
@@ -94,17 +94,52 @@ void RunScene::createPlayer()
 
 void RunScene::createControls()
 {
+    // jump
     auto jump_item = MenuItemImage::create(
                                            "button-jump.png",
                                            "button-jump-select.png",
                                            CC_CALLBACK_1(RunScene::buttonJumpCallback, this));
-    
 	jump_item->setPosition(Point(screen_origin_size.x + screen_visible_size.width - jump_item->getContentSize().width/2 ,
                                  screen_origin_size.y + jump_item->getContentSize().height/2));
+    auto contol_menu_jump = Menu::create(jump_item, NULL);
+    contol_menu_jump->setPosition(Point::ZERO);
+    this->main_layer->addChild(contol_menu_jump, 999);
 
-    auto contol_menu = Menu::create(jump_item, NULL);
-    contol_menu->setPosition(Point::ZERO);
-    this->main_layer->addChild(contol_menu, 999);
+    // shiled
+    auto shield_item = MenuItemImage::create(
+                                             "button-shield.png",
+                                             "button-shiled-select.png",
+                                             CC_CALLBACK_1(RunScene::buttonShieldCallback, this));
+	shield_item->setPosition(Point(screen_origin_size.x + screen_visible_size.width - jump_item->getContentSize().width/2,
+                                   screen_visible_size.height - jump_item->getContentSize().height/2));
+    auto contol_menu_shield = Menu::create(shield_item, NULL);
+    contol_menu_shield->setPosition(Point::ZERO);
+    this->main_layer->addChild(contol_menu_shield, 999);
+    
+    // mantrap
+    auto mantrap_item = MenuItemImage::create(
+                                             "button-mantrap.png",
+                                             "button-mantrap-select.png",
+                                             CC_CALLBACK_1(RunScene::buttonMantrapCallback, this));
+    mantrap_item->setPosition(Point(screen_origin_size.x + screen_visible_size.width -  jump_item->getContentSize().width/2 - jump_item->getContentSize().width * 1 ,
+                                    screen_visible_size.height - jump_item->getContentSize().height/2));
+    auto contol_menu_mantrap = Menu::create(mantrap_item, NULL);
+    contol_menu_mantrap->setPosition(Point::ZERO);
+    this->main_layer->addChild(contol_menu_mantrap, 999);
+    
+    
+    
+    // back
+    auto back_item = MenuItemImage::create(
+                                           "button-back.png",
+                                           "button-back-select.png",
+                                           CC_CALLBACK_1(RunScene::buttonBackCallback, this));
+	back_item->setPosition(Point(screen_origin_size.x +  back_item->getContentSize().width/2 ,
+                                 screen_visible_size.height - jump_item->getContentSize().height/2));
+    auto contol_menu_back = Menu::create(back_item, NULL);
+    contol_menu_back->setPosition(Point::ZERO);
+    this->main_layer->addChild(contol_menu_back, 999);
+    
 }
 
 void RunScene::update(float dt)
@@ -112,7 +147,7 @@ void RunScene::update(float dt)
     if( ! IS_LOADED ) return;
     
     int velocityIterations = 8;
-	int positionIterations = 1;
+	int positionIterations = 10;
     
     physic_world->Step(dt, velocityIterations, positionIterations);
     
@@ -131,20 +166,66 @@ void RunScene::update(float dt)
     
     float mapOffset_x = screen_visible_size.width - player_x - screen_visible_size.width / 2;
     float mapOffset_y = screen_visible_size.height - player_y - screen_visible_size.height / 2;
-    
-    
 
     this->map_layer->setPositionX( round( mapOffset_x - 0.5f ) );
     this->map_layer->setPositionY( round( mapOffset_y - 0.5f ) );
     
     this->bg_layer->setPositionX( round( mapOffset_x / 5.0f - 0.5f ) );
     this->bg_layer->setPositionY( -1 * round( mapOffset_y / 10.0f - 0.5f )  - this->screen_visible_size.height / 3 );
+    
+    // update game objects
 
+    
+    auto track = game_objects.begin();
+    while ( track != game_objects.end() ) {
+        if ( track->isToDestroy() ) {
+            track->destoy();
+            track = game_objects.erase(track);
+        }
+        else {
+            track->reCalc(dt);
+            ++track;
+        }
+    }
+    
+    
+//    std::vector<int> objects_to_delete;
+//    int game_object_increment = 0;
+//    for (auto object = game_objects.begin(); object != game_objects.end(); ++object)
+//    {
+//        
+//        objects_to_delete.push_back(game_object_increment);
+//        game_object_increment++;
+//    }
+//    
+//    
+//    objects_to_delete.clear();
+}
+
+void RunScene::buttonBackCallback(Object* pSender)
+{
+    player_object->setPosition(600,1000);
 }
 
 void RunScene::buttonJumpCallback(Object* pSender)
 {
     player_object->jump();
+}
+
+void RunScene::buttonShieldCallback(Object* pSender)
+{
+    player_object->applyShiled();
+}
+
+void RunScene::buttonMantrapCallback(Object* pSender)
+{
+    int place_result = player_object->placeMantrap();
+    if ( place_result != TRAP_NONE )
+    {
+        GameObject *new_game_object = new GameObject(place_result,OWNER_MY,this->player_object->getPosition(),this->physic_world,this->map_layer);
+        this->game_objects.push_back(*new_game_object);
+    }
+    
 }
 
 void RunScene::makePhysicPoligonGround(pugi::xml_node tool,int mode)
