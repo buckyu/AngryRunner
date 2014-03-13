@@ -16,12 +16,12 @@ class PlayerObject : public b2ContactListener
     bool IS_RUNNING = false;
     int jumps_count = 0;
   
-    SpriteFrameCache* sprite_1cache;
     SpriteFrameCache* cache;
     
     RepeatForever* animation_running;
     RepeatForever* animation_flying;
     
+    Vector<SpriteFrame*> spriteFramesShield;
     Vector<SpriteFrame*> spriteFramesRun;
     Vector<SpriteFrame*> spriteFramesFly;
     
@@ -45,7 +45,9 @@ class PlayerObject : public b2ContactListener
         bool applyShiled();
         void moveRight();
         Sprite *player_sprite;
+        Sprite *shield_sprite;
         SpriteBatchNode* spriteSheet;
+        SpriteBatchNode* spriteSheetShield;
         b2Vec2 getPosition();
 
     private:

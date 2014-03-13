@@ -67,6 +67,8 @@
 		535E84E818C9340B002154A2 /* map_01_bg.tmx in Resources */ = {isa = PBXBuildFile; fileRef = 535E84E618C9340B002154A2 /* map_01_bg.tmx */; };
 		537634F018BEAF1700BC2044 /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 537634EE18BEAF1700BC2044 /* pugixml.cpp */; };
 		53A66DBA18BBC8A100802FEC /* RunScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 53A66DB818BBC8A100802FEC /* RunScene.cpp */; };
+		53B48F2F18D23954006A6A4C /* bn_shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B48F2D18D23954006A6A4C /* bn_shield.png */; };
+		53B48F3018D23954006A6A4C /* bn_shield.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53B48F2E18D23954006A6A4C /* bn_shield.plist */; };
 		53E0E06218C01AEF00E55D27 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E05E18C01AEF00E55D27 /* HelloWorld.png */; };
 		53E0E06F18C02A2000E55D27 /* button-jump.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E06D18C02A2000E55D27 /* button-jump.png */; };
 		53E0E07018C02A2000E55D27 /* button-jump-select.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E06E18C02A2000E55D27 /* button-jump-select.png */; };
@@ -315,6 +317,8 @@
 		537634EF18BEAF1700BC2044 /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
 		53A66DB818BBC8A100802FEC /* RunScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RunScene.cpp; path = ../Classes/RunScene.cpp; sourceTree = "<group>"; };
 		53A66DB918BBC8A100802FEC /* RunScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RunScene.h; path = ../Classes/RunScene.h; sourceTree = "<group>"; };
+		53B48F2D18D23954006A6A4C /* bn_shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bn_shield.png; sourceTree = "<group>"; };
+		53B48F2E18D23954006A6A4C /* bn_shield.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bn_shield.plist; sourceTree = "<group>"; };
 		53E0E05718BFE33900E55D27 /* Setting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Setting.h; path = ../Classes/Setting.h; sourceTree = "<group>"; };
 		53E0E05E18C01AEF00E55D27 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
 		53E0E06D18C02A2000E55D27 /* button-jump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button-jump.png"; sourceTree = "<group>"; };
@@ -575,6 +579,8 @@
 				53E737B318D11B6A00DDD13A /* tr_mantrap.png */,
 				53E737B418D11B6A00DDD13A /* tr_mantrap.plist */,
 				53E737B718D12A7A00DDD13A /* button-back.png */,
+				53B48F2D18D23954006A6A4C /* bn_shield.png */,
+				53B48F2E18D23954006A6A4C /* bn_shield.plist */,
 				53E737B818D12A7A00DDD13A /* button-back-select.png */,
 				535E84E618C9340B002154A2 /* map_01_bg.tmx */,
 				53E0E06E18C02A2000E55D27 /* button-jump-select.png */,
@@ -804,10 +810,12 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
+				53B48F2F18D23954006A6A4C /* bn_shield.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				5316863618D0E79A00415985 /* button-mantrap-select.png in Resources */,
 				5316863418D0E79A00415985 /* button-shield.png in Resources */,
 				53E737B918D12A7A00DDD13A /* button-back.png in Resources */,
+				53B48F3018D23954006A6A4C /* bn_shield.plist in Resources */,
 				53E0E06218C01AEF00E55D27 /* HelloWorld.png in Resources */,
 				535E84E718C9340B002154A2 /* map_01_bg.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,

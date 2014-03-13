@@ -4,10 +4,18 @@
 void PlayerObject::init(float poz_x, float poz_y)
 {
     spriteSheet = SpriteBatchNode::create("player_sprite.png");
+    spriteSheetShield = SpriteBatchNode::create("bn_shield.png");
+
     cache = SpriteFrameCache::sharedSpriteFrameCache();
+    cache->addSpriteFramesWithFile("bn_shield.plist");
     cache->addSpriteFramesWithFile("player_sprite.plist");
+
+    shield_sprite = Sprite::createWithSpriteFrameName("bn_shield_1.png");
+    shield_sprite->setPosition(Point(poz_x, poz_y));
+    //spriteSheet->addChild(shield_sprite);
     
-    player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");    player_sprite->setPosition(Point(poz_x, poz_y));
+    player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");
+    player_sprite->setPosition(Point(poz_x, poz_y));
     player_sprite->setScale(1.0);
     spriteSheet->addChild(player_sprite);
 
@@ -15,8 +23,17 @@ void PlayerObject::init(float poz_x, float poz_y)
     for(int i = 1; i < 8; i++)
     {
         sprintf(str, "p_walk_%02d.png", i);
-        spriteFramesRun.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
+        if( cache->SpriteFrameCache::getSpriteFrameByName( str )  != nullptr )
+            spriteFramesRun.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
     }
+    
+    for(int i = 1; i < 8; i++)
+    {
+        sprintf(str, "bn_shield_%d.png", i);
+        if( cache->SpriteFrameCache::getSpriteFrameByName( str )  != nullptr )
+            spriteFramesShield.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
+    }
+
     
     spriteFramesFly.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( "p_jump.png" ) );
 }

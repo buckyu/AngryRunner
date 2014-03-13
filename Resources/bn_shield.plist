@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		
+		<key>bn_shield_0.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{26, 27}, {202, 202}}</string>
+			<key>spriteOffset</key>
+			<string>{2, -3}</string>
+			<key>spriteSize</key>
+			<string>{202, 202}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{196, 214}, {202, 202}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>bn_shield_1.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{27, 23}, {194, 210}}</string>
+			<key>spriteOffset</key>
+			<string>{-1, -3}</string>
+			<key>spriteSize</key>
+			<string>{194, 210}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 214}, {194, 210}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>bn_shield_2.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{25, 28}, {220, 196}}</string>
+			<key>spriteOffset</key>
+			<string>{10, -1}</string>
+			<key>spriteSize</key>
+			<string>{220, 196}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{402, 0}, {220, 196}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>bn_shield_3.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{31, 32}, {202, 202}}</string>
+			<key>spriteOffset</key>
+			<string>{7, -8}</string>
+			<key>spriteSize</key>
+			<string>{202, 202}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{198, 0}, {202, 202}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>bn_shield_4.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{36, 23}, {196, 212}}</string>
+			<key>spriteOffset</key>
+			<string>{9, -4}</string>
+			<key>spriteSize</key>
+			<string>{196, 212}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{0, 0}, {196, 212}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+		<key>bn_shield_5.png</key>
+		<dict>
+			<key>aliases</key>
+			<array>
+			
+			</array>
+			<key>spriteColorRect</key>
+			<string>{{19, 35}, {220, 196}}</string>
+			<key>spriteOffset</key>
+			<string>{4, -8}</string>
+			<key>spriteSize</key>
+			<string>{220, 196}</string>
+			<key>spriteSourceSize</key>
+			<string>{250, 250}</string>
+			<key>spriteTrimmed</key>
+			<true/>
+			<key>textureRect</key>
+			<string>{{400, 204}, {220, 196}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+		
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>version</key>
+		<string>1.6.0</string>
+		<key>format</key>
+		<integer>3</integer>
+		<key>size</key>
+		<string>{1024, 512}</string>
+		<key>name</key>
+		<string>Untitled</string>
+		<key>target</key>
+		<dict>
+			<key>name</key>
+			<string>default</string>
+			<key>textureFileName</key>
+			<string>bn_shield</string>
+			<key>textureFileExtension</key>
+			<string>.png</string>
+			<key>coordinatesFileName</key>
+			<string>bn_shield</string>
+			<key>coordinatesFileExtension</key>
+			<string>.plist</string>
+			<key>premultipliedAlpha</key>
+			<false/>
+		</dict>
+	</dict>
+</dict>
+</plist>
