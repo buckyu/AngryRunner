@@ -3,22 +3,35 @@
 
 void PlayerObject::init(float poz_x, float poz_y)
 {
+    player_start_position_x = poz_x;
+    player_start_position_y = poz_y;
+    
+    player_layer = Layer::create();
+    
+    // load spritebacts
     spriteSheet = SpriteBatchNode::create("player_sprite.png");
     spriteSheetShield = SpriteBatchNode::create("bn_shield.png");
 
+    // load plists
     cache = SpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("bn_shield.plist");
     cache->addSpriteFramesWithFile("player_sprite.plist");
 
+    // init sprites
     shield_sprite = Sprite::createWithSpriteFrameName("bn_shield_1.png");
-    shield_sprite->setPosition(Point(poz_x, poz_y));
-    //spriteSheet->addChild(shield_sprite);
+    shield_sprite->setScale(0.6);
+    shield_sprite->setVisible(false);
+    spriteSheetShield->addChild(shield_sprite);
     
     player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");
-    player_sprite->setPosition(Point(poz_x, poz_y));
     player_sprite->setScale(1.0);
     spriteSheet->addChild(player_sprite);
 
+    // add sprites to layer
+    player_layer->addChild(spriteSheet);
+    player_layer->addChild(spriteSheetShield);
+    
+    // load walk animation
     char str[100] = {0};
     for(int i = 1; i < 8; i++)
     {
@@ -27,21 +40,26 @@ void PlayerObject::init(float poz_x, float poz_y)
             spriteFramesRun.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
     }
     
-    for(int i = 1; i < 8; i++)
+    // load shield animation
+    for(int i = 0; i < 8; i++)
     {
         sprintf(str, "bn_shield_%d.png", i);
         if( cache->SpriteFrameCache::getSpriteFrameByName( str )  != nullptr )
             spriteFramesShield.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
     }
-
     
+    // load fly animation
     spriteFramesFly.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( "p_jump.png" ) );
+    
+    
+    // start shield animation
+    shield_sprite->runAction( RepeatForever::create( Animate::create( Animation::createWithSpriteFrames( spriteFramesShield , 0.11f) ) ) ) ;
 }
 
 void PlayerObject::initPhysic(b2World* world)
 {
     b2BodyDef playerBodyDef;
-    playerBodyDef.position.Set(this->player_sprite->getPositionX() / PTM_RATIO, this->player_sprite->getPositionY() / PTM_RATIO);
+    playerBodyDef.position.Set(this->player_start_position_x / PTM_RATIO, this->player_start_position_y / PTM_RATIO);
     playerBodyDef.type = b2_dynamicBody;
    
 	body = world->CreateBody(&playerBodyDef);
@@ -128,12 +146,11 @@ void PlayerObject::jump() {
 
 void PlayerObject::reDraw()
 {
-    this->reCalc();
-    this->player_sprite->setPosition(this->body->GetPosition().x * PTM_RATIO, this->body->GetPosition().y * PTM_RATIO);
+    this->player_layer->setPosition(this->body->GetPosition().x * PTM_RATIO, this->body->GetPosition().y * PTM_RATIO);
 }
 
 
-void PlayerObject::reCalc()
+void PlayerObject::reCalc(float dt)
 {
     auto now_velocity = this->body->GetLinearVelocity();
     auto now_speed = now_velocity.x;
@@ -148,6 +165,19 @@ void PlayerObject::reCalc()
         b2Vec2 impulse = b2Vec2(PLAYER_FORW_IMPLS, 0.0f);
         body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),true);
     }
+    
+    
+    // update timers
+    if( this->timer_shield > 0 ) this->timer_shield -= dt;
+    
+    
+    // check shield
+    if ( this->timer_shield > 0 && ! shield_sprite->isVisible() )
+        shield_sprite->setVisible(true);
+    if ( this->timer_shield <= 0 && shield_sprite->isVisible() )
+         shield_sprite->setVisible(false);
+    
+    this->reDraw();
 }
 
 void PlayerObject::BeginContact(b2Contact* contact)
@@ -215,6 +245,9 @@ b2Vec2 PlayerObject::getPosition()
 
 bool PlayerObject::applyShiled()
 {
+    if ( this->timer_shield > 0 ) return false;
+    
+    this->timer_shield = PLAYER_SHIELD_TIME;
     return true;
 }
 

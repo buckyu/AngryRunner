@@ -8,13 +8,21 @@ using namespace cocos2d;
 
 class PlayerObject : public b2ContactListener
 {
+    float timer_toAlive = 0;
+    float timer_toImune = 0;
+    float timer_shield = 0;
+    
     int ANIMATION_RUN_TAG = 1;
     int ANIMATION_FLY_TAG = 2;
     
     
     bool IS_ALIVE   = true;
     bool IS_RUNNING = false;
+    
     int jumps_count = 0;
+    
+    int player_start_position_x = 0;
+    int player_start_position_y = 0;
   
     SpriteFrameCache* cache;
     
@@ -25,18 +33,22 @@ class PlayerObject : public b2ContactListener
     Vector<SpriteFrame*> spriteFramesRun;
     Vector<SpriteFrame*> spriteFramesFly;
     
+    Sprite *player_sprite;
+    Sprite *shield_sprite;
+    SpriteBatchNode* spriteSheet;
+    SpriteBatchNode* spriteSheetShield;
+    
     b2Body* body;
 
-    int timer_toAlive = 0;
-    int timer_toImune = 0;
+
     
-    void reCalc();
+    
     
     public:
         void setPosition(float x,float y);
     
         void init(float poz_x, float poz_y);
-        void reDraw();
+        void reCalc(float dt);
     
         void initPhysic(b2World* world);
    
@@ -44,13 +56,11 @@ class PlayerObject : public b2ContactListener
         int placeMantrap();
         bool applyShiled();
         void moveRight();
-        Sprite *player_sprite;
-        Sprite *shield_sprite;
-        SpriteBatchNode* spriteSheet;
-        SpriteBatchNode* spriteSheetShield;
+        Layer* player_layer;
         b2Vec2 getPosition();
 
     private:
+        void reDraw();
         void BeginContact(b2Contact* contact);
         void EndContact(b2Contact* contact);
         void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);

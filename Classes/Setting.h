@@ -26,4 +26,4 @@
 
 #define OWNER_MY            300
 
-
+#define PLAYER_SHIELD_TIME   5

@@ -89,7 +89,7 @@ void RunScene::createPlayer()
     player_object = new PlayerObject();
     player_object->init(600,1000);
     player_object->initPhysic(physic_world);
-    this->map_layer->addChild(player_object->spriteSheet);
+    this->map_layer->addChild(player_object->player_layer);
 }
 
 void RunScene::createControls()
@@ -159,10 +159,11 @@ void RunScene::update(float dt)
 //			//myActor->setRotation(-1 * CC_RADIANS_TO_DEGREES(b->GetAngle()));
 		}
 	}
-    player_object->reDraw();
+    // update player data
+    player_object->reCalc(dt);
 
-    float player_x = this->player_object->player_sprite->getPositionX();
-    float player_y = this->player_object->player_sprite->getPositionY();
+    float player_x = this->player_object->player_layer->getPositionX();
+    float player_y = this->player_object->player_layer->getPositionY();
     
     float mapOffset_x = screen_visible_size.width - player_x - screen_visible_size.width / 2;
     float mapOffset_y = screen_visible_size.height - player_y - screen_visible_size.height / 2;
