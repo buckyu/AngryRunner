@@ -8,7 +8,7 @@
 #import "../../Classes/GameObject.h"
 #include "../../Classes/Setting.h"
 
-class RunScene : public cocos2d::Layer
+class RunScene : public cocos2d::Layer , public b2ContactListener
 {
     bool IS_LOADED = false;
     
@@ -57,6 +57,12 @@ class RunScene : public cocos2d::Layer
         void createMap();
         void createControls();
         void createPlayer();
+        
+        void BeginContact(b2Contact* contact);
+        void EndContact(b2Contact* contact);
+        void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
+        void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
+        bool isContactTrapAndPlayer(b2Contact* contact);
 };
 
-#endif 
+#endif

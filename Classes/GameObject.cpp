@@ -12,6 +12,8 @@ GameObject::GameObject(int bonus_id,int owner,b2Vec2 position,b2World* world,Lay
     this->initSpriteObject();
     this->initPhysicObject();
     
+    this->timer_toActive = MANTRAP_ACTIVE_TIME;
+    
     CCLOG("Game object placed");
 }
 
@@ -80,28 +82,36 @@ void GameObject::initPhysicObject()
 
 void GameObject::reCalc(float dt)
 {
-    // increase live time
-    this->lived_time += dt;
-    this->reDraw();
+    // update timers
+    this->timer_lived += dt;
+    this->timer_toActive -= dt;
     
-   for (b2ContactEdge* edge = this->body->GetContactList(); edge; edge = edge->next)
-   {
-       if ( edge->contact->IsTouching() )
-       {
+    this->reDraw();
+
+    // ignore all calculation until object become active
+    
+    if( this->timer_toActive > 0 ) return;
+    
+    for (b2ContactEdge* edge = this->body->GetContactList(); edge; edge = edge->next)
+    {
+        if ( edge->contact->IsTouching() )
+        {
            b2Body* obj_a = edge->contact->GetFixtureA()->GetBody();
            b2Body* obj_b = edge->contact->GetFixtureB()->GetBody();
            
+            
+            tryStartStandartAnimation();
            if( ( obj_a == this->body && (int)obj_b->GetUserData() == OBJ_TYPE_PLAYER ) ||
               ( obj_b == this->body && (int)obj_a->GetUserData() == OBJ_TYPE_PLAYER ) )
            {
-               this->tryStartActionAnimation();
+             //  this->tryStartActionAnimation();
            }
            else
            {
-               this->tryStartStandartAnimation();
+             //  this->tryStartStandartAnimation();
            }
-       }
-   }
+        }
+    }
     
 
 
@@ -109,7 +119,7 @@ void GameObject::reCalc(float dt)
 
 bool GameObject::isToDestroy()
 {
-    if( lived_time > 10.0f )
+    if( this->timer_lived > MANTRAP_LIVE_TIME )
         return true;
     else
         return false;
@@ -170,6 +180,12 @@ void GameObject::stopAllLoopingAnimations()
 {
     object_sprite->stopActionByTag(this->ANIMATION_STANDART_TAG);
     object_sprite->stopActionByTag(this->ANIMATION_ACTION_TAG);
+}
+
+bool GameObject::isActive()
+{
+    if( this->timer_toActive > 0 ) return false;
+    else return true;
 }
 
 

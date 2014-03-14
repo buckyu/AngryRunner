@@ -11,6 +11,8 @@
 #define OBJ_TYPE_TRAP       003
 #define PLAYER_MAX_SPEED    020
 #define PLAYER_FORW_IMPLS   050
+#define PLAYER_DIE_IMPLS    002
+#define PLAYER_DIED_TIME      2
 #define TRAP_NONE           999
 #define TRAP_SAW            100
 #define TRAP_TNT            101
@@ -27,3 +29,6 @@
 #define OWNER_MY            300
 
 #define PLAYER_SHIELD_TIME   5
+
+#define MANTRAP_LIVE_TIME   10
+#define MANTRAP_ACTIVE_TIME  1

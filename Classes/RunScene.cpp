@@ -43,6 +43,7 @@ void RunScene::createMap()
     std::string bg_file = stringStream.str();
     
     physic_world = new b2World( b2Vec2(0.0f, -20.0f) );
+    physic_world->SetContactListener(this);
     //map_layer->addChild(B2DebugDrawLayer::create(physic_world, PTM_RATIO), 9999);
     
     // load tiled map
@@ -285,3 +286,56 @@ std::vector<std::string> RunScene::split(std::string str, std::string delim)
     v.push_back(str.substr(start));
     return v;
 }
+
+
+void RunScene::BeginContact(b2Contact* contact)
+{
+    this->player_object->BeginContact(contact);
+    
+    
+    b2Body* obj_a = contact->GetFixtureA()->GetBody();
+    b2Body* obj_b = contact->GetFixtureB()->GetBody();
+
+    // if contact player and trap
+    if ( isContactTrapAndPlayer( contact ) )
+    {
+        // find contancted trap
+        for (auto object = game_objects.begin(); object != game_objects.end(); ++object)
+        {
+            if ( object->body == obj_a || object->body == obj_b )
+            {
+                if ( object->isActive() )
+                    if ( this->player_object->onTrap( object->TYPE ) )
+                        object->tryStartActionAnimation();
+            }
+        }
+    }
+    
+    
+    
+}
+
+void RunScene::EndContact(b2Contact* contact)
+{
+    this->player_object->EndContact(contact);
+}
+void RunScene::PreSolve(b2Contact* contact, const b2Manifold* oldManifold)
+{
+    this->player_object->PreSolve(contact,oldManifold);
+}
+void RunScene::PostSolve(b2Contact* contact, const b2ContactImpulse* impulse)
+{
+    this->player_object->PostSolve(contact,impulse);
+}
+
+bool RunScene::isContactTrapAndPlayer(b2Contact* contact)
+{
+    int obj_a = (int)contact->GetFixtureA()->GetBody()->GetUserData();
+    int obj_b = (int)contact->GetFixtureB()->GetBody()->GetUserData();
+    if ( contact->IsTouching() )
+        if( ( obj_a == OBJ_TYPE_TRAP && obj_b == OBJ_TYPE_PLAYER ) ||
+           ( obj_b == OBJ_TYPE_TRAP && obj_a == OBJ_TYPE_PLAYER ) )
+            return true;
+    return false;
+}
+

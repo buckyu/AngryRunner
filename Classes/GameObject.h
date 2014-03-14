@@ -13,7 +13,8 @@ class GameObject
     int bonus_id;
     int owner;
     
-    float lived_time = 0.0f;
+    float timer_lived = 0.0f;
+    float timer_toActive = 0.0f;
     
     SpriteFrameCache* sprite_cache;
     SpriteFrameCache* cache;
@@ -24,8 +25,6 @@ class GameObject
     Vector<SpriteFrame*> spriteFramesStandart;
     Vector<SpriteFrame*> spriteFramesAction;
     
-    b2Body* body;
-    
     b2Vec2 position;
     
     b2World* world;
@@ -33,26 +32,26 @@ class GameObject
     Layer* map_layer;
     
     public :
+        int TYPE = TRAP_MANTRAP;
+        b2Body* body;
         GameObject(int bonus_id,int owner,b2Vec2 position, b2World* world,Layer* map_layer);
         void destoy();
         void reCalc(float dt);
         bool isToDestroy();
+        bool isActive();
         Sprite *object_sprite;
         SpriteBatchNode* spriteSheet;
-    
+    void tryStartActionAnimation();
+   
     private :
         void initPhysicObject();
         void initSpriteObject();
         void startLiveCycle();
         void reDraw();
-    
         void tryStartStandartAnimation();
         void StartStandartAnimation();
-        void tryStartActionAnimation();
+    
         void StartActionAnimation();
         void stopAllLoopingAnimations();
-    
-    
-    
     
 };

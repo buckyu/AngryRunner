@@ -11,11 +11,13 @@ void PlayerObject::init(float poz_x, float poz_y)
     // load spritebacts
     spriteSheet = SpriteBatchNode::create("player_sprite.png");
     spriteSheetShield = SpriteBatchNode::create("bn_shield.png");
+    spriteSheetBlood = SpriteBatchNode::create("blood.png");
 
     // load plists
     cache = SpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("bn_shield.plist");
     cache->addSpriteFramesWithFile("player_sprite.plist");
+    cache->addSpriteFramesWithFile("blood.plist");
 
     // init sprites
     shield_sprite = Sprite::createWithSpriteFrameName("bn_shield_1.png");
@@ -26,10 +28,16 @@ void PlayerObject::init(float poz_x, float poz_y)
     player_sprite = Sprite::createWithSpriteFrameName("p_stand.png");
     player_sprite->setScale(1.0);
     spriteSheet->addChild(player_sprite);
+    
+    blood_sprite = Sprite::createWithSpriteFrameName("blood_01.png");
+    blood_sprite->setScale(1.0);
+    blood_sprite->setVisible(false);
+    spriteSheetBlood->addChild(blood_sprite);
 
     // add sprites to layer
     player_layer->addChild(spriteSheet);
     player_layer->addChild(spriteSheetShield);
+    player_layer->addChild(spriteSheetBlood);
     
     // load walk animation
     char str[100] = {0};
@@ -48,12 +56,22 @@ void PlayerObject::init(float poz_x, float poz_y)
             spriteFramesShield.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
     }
     
+    // load shield animation
+    for(int i = 1; i < 12; i++)
+    {
+        sprintf(str, "blood_%02d.png", i);
+        if( cache->SpriteFrameCache::getSpriteFrameByName( str )  != nullptr )
+            spriteFramesBlood.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( str ) );
+    }
+    
+    
     // load fly animation
     spriteFramesFly.pushBack( cache->SpriteFrameCache::getSpriteFrameByName( "p_jump.png" ) );
-    
-    
+
     // start shield animation
     shield_sprite->runAction( RepeatForever::create( Animate::create( Animation::createWithSpriteFrames( spriteFramesShield , 0.11f) ) ) ) ;
+   
+   
 }
 
 void PlayerObject::initPhysic(b2World* world)
@@ -74,7 +92,7 @@ void PlayerObject::initPhysic(b2World* world)
   
 	body->CreateFixture(&fixtureDef);
     body->SetUserData( (void*)OBJ_TYPE_PLAYER );
-    world->SetContactListener(this);
+   // world->SetContactListener(this);
 }
 
 
@@ -106,6 +124,14 @@ void PlayerObject::StartFlyAnimation()
     animation_flying = RepeatForever::create( Animate::create( Animation::createWithSpriteFrames(spriteFramesFly, 0.05f) ) );
     animation_flying->setTag(this->ANIMATION_FLY_TAG);
     player_sprite->runAction( animation_flying );
+}
+
+void PlayerObject::StartBloodAnimation()
+{
+    this->blood_sprite->setVisible( true );
+    animation_blood = Animate::create( Animation::createWithSpriteFrames( spriteFramesBlood , 0.03f)  );
+    animation_blood->setTag( this->ANIMATION_BLOOD_TAG );
+    blood_sprite->runAction( animation_blood );
 }
 
 void PlayerObject::stopAllLoopingAnimations()
@@ -147,6 +173,14 @@ void PlayerObject::jump() {
 void PlayerObject::reDraw()
 {
     this->player_layer->setPosition(this->body->GetPosition().x * PTM_RATIO, this->body->GetPosition().y * PTM_RATIO);
+
+    // check blood animation
+    if( blood_sprite->numberOfRunningActions() == 0  ) blood_sprite->setVisible( false );
+    
+    // check die opacity
+    if( this->isDie() )    this->player_sprite->setOpacity( 100 );
+    else    this->player_sprite->setOpacity( 255 );
+    
 }
 
 
@@ -161,14 +195,15 @@ void PlayerObject::reCalc(float dt)
     }
     else
     {
-        //50
-        b2Vec2 impulse = b2Vec2(PLAYER_FORW_IMPLS, 0.0f);
-        body->ApplyLinearImpulse(impulse, body->GetWorldCenter(),true);
+        if( ! this->isDie() )
+            body->ApplyLinearImpulse( b2Vec2(PLAYER_FORW_IMPLS, 0.0f) , body->GetWorldCenter(),true);
+        else
+            body->ApplyLinearImpulse( b2Vec2(PLAYER_DIE_IMPLS, 0.0f) , body->GetWorldCenter(),true);
     }
-    
-    
+
     // update timers
-    if( this->timer_shield > 0 ) this->timer_shield -= dt;
+    if ( this->timer_shield > 0 ) this->timer_shield -= dt;
+    if ( this->timer_toAlive > 0 ) this->timer_toAlive -= dt;
     
     
     // check shield
@@ -177,7 +212,7 @@ void PlayerObject::reCalc(float dt)
     if ( this->timer_shield <= 0 && shield_sprite->isVisible() )
          shield_sprite->setVisible(false);
     
-    this->reDraw();
+      this->reDraw();
 }
 
 void PlayerObject::BeginContact(b2Contact* contact)
@@ -261,3 +296,35 @@ void PlayerObject::setPosition(float x , float y)
     this->body->SetTransform( b2Vec2( x / PTM_RATIO , y / PTM_RATIO ), 0);
 }
 
+bool PlayerObject::onTrap(int type)
+{
+    if ( this->timer_toAlive <= 0 )
+    {
+        if( ! this->isImune() )
+        {
+            this->killPlayer();
+            return true;
+        }
+    }
+    return false;
+}
+
+bool PlayerObject::isDie()
+{
+    if ( this->timer_toAlive <= 0 ) return false;
+    return true;
+}
+
+bool PlayerObject::isImune()
+{
+    if ( this->timer_shield > 0 ) return true;
+    return false;
+}
+
+void PlayerObject::killPlayer()
+{
+    this->timer_toAlive = PLAYER_DIED_TIME;
+    this->StartBloodAnimation();
+    this->body->SetAwake(false);
+   
+}
